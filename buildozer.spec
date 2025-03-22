@@ -16,7 +16,7 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 
 # (list) List of inclusions using pattern matching
-source.include_patterns = assets/*.py
+#source.include_patterns = assets/*.py
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
@@ -101,7 +101,7 @@ android.permissions = android.permission.INTERNET, (name=android.permission.WRIT
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-android.api = 31
+#android.api = 31
 
 # (int) Minimum API your APK / AAB will support.
 #android.minapi = 21
