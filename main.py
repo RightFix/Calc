@@ -7,7 +7,7 @@ from kivy.uix.switch import Switch
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.app import App
-#from assets.tvm import tvmcalc
+from assets.tvm import tvmcalc
 
 class MyScreenManager(ScreenManager):
     def __init__(self, **kwargs):
@@ -217,7 +217,7 @@ class Screen2(Screen):
         super(Screen2, self).__init__(**kwargs)
     
         # TVM  Screen
-        #tvmcalc(self)     
+        tvmcalc(self)     
 
     def go_to_screen1(self, instance):
         self.manager.current = 'screen1'
