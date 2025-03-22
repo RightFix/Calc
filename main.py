@@ -1,6 +1,7 @@
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.switch import Switch 
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.button import Button
@@ -17,7 +18,14 @@ class MyScreenManager(ScreenManager):
 class Screen1(Screen):
     def __init__(self, **kwargs):
         super(Screen1, self).__init__(**kwargs)
-        layout = BoxLayout(orientation='vertical', )
+        layout = BoxLayout(orientation='vertical')
+        
+        navigation = FloatLayout()
+        basic = Button(text="More", font_size = 25, color="white", size_hint=(0.15,0.05), top=1520, right=700,)
+        basic.bind(on_press= self.go_to_screen2)
+        navigation.add_widget(basic)
+        self.add_widget(navigation)
+        
         output = Label(text="",font_size=55, color="white",bold=True, size_hint=(1,1.8), halign="right", text_size=(650,650), valign="bottom",padding=(0,0),)
         
         result = Label(text="",font_size=35, color="white",bold=False, center=(0,0),size_hint=(1,0.2), halign="right", valign="bottom", text_size=(650,50))
@@ -28,7 +36,7 @@ class Screen1(Screen):
         
         clear = Button(text ="C", bold= True, font_size= 30)
         def clr(instance):
-          output.text =  ""
+          output.text = ""
           return output.text
         clear.bind(on_press= clr)
         body.add_widget(clear)
@@ -47,7 +55,7 @@ class Screen1(Screen):
         multiply.bind(on_press= mul)
         body.add_widget(multiply)
         
-        delete = Button(text ="del", bold= True, font_size= 30)
+        delete = Button(text ="Del", bold= True, font_size= 30)
         def dele (instance):
           if len(output.text) > 0:  
            output.text = str(output.text)[0:-1]
@@ -138,10 +146,16 @@ class Screen1(Screen):
               check1 = output.text.replace("×","*")  
               check2 = check1.replace("÷","/")
               soln = eval(check2)
-              output.text = str(soln)
-              result.text = str(soln)
-              return output.text, result.text
-          except SyntaxError:
+              check3 = round(soln,10)
+              if check3 == 0: 
+                 result.text = str(soln)
+                 output.text = str(soln)
+                 return output.text, result.text
+              else:
+                 result.text = str(check3)
+                 output.text = str(check3)
+                 return output.text, result.text
+          except (SyntaxError, ZeroDivisionError):
                output.text = output.text
                result.text = "Error"
                return output.text, result.text    
@@ -170,19 +184,22 @@ class Screen1(Screen):
         
         point = Button(text =".", bold= True, font_size= 30)
         def poin(instance):
-          if "." not in str(output.text):
            output.text +=  "."
            return output.text
         point.bind(on_press= poin)
         body.add_widget(point)
         
-        more = Button(text ="more", bold= True, font_size= 30)
-        body.add_widget(more)
+        Ans = Button(text ="Ans", bold= True, font_size= 30)
+        def res(instance):
+          if result.text != "Error":
+           output.text +=  result.text
+           return output.text
+        Ans.bind(on_press= res)
+        body.add_widget(Ans)
         
         layout.add_widget(body)
         self.add_widget(layout)
         
-
     def go_to_screen2(self, instance):
         self.manager.current = 'screen2'
     def go_to_screen3(self, instance):
