@@ -1,0 +1,152 @@
+<AssetsVal>
+    name: "assets_val_screen"
+
+    MDFloatLayout:
+        MDNavigationRail:
+            id: nav_rail
+            pos_hint: {"x": 0, "top": 1}
+            MDNavigationRailItem:
+                icon: "calculator"
+                text: "Calc"
+                on_release: root.navigate_to("calculator_screen")
+            MDNavigationRailItem:
+                icon: "bank"
+                text: "TVM"
+                on_release: root.navigate_to("tvm_screen")
+            MDNavigationRailItem:
+                icon: "chart-line"
+                text: "Assets"
+                on_release: root.navigate_to("assets_val_screen")
+
+        MDScrollView:
+            size_hint_x: 0.75
+            pos_hint: {"x": 0.25}
+            size_hint_y: 1
+
+            MDBoxLayout:
+                orientation: "vertical"
+                padding: "16dp"
+                spacing: "16dp"
+                adaptive_height: True
+
+                MDLabel:
+                    text: "Assets Valuation"
+                    font_style: "Headline"
+                    size_hint_y: None
+                    height: "48dp"
+
+                MDLabel:
+                    text: "Depreciation & Investment Calculations"
+                    size_hint_y: None
+                    height: "32dp"
+                    opacity: 0.7
+
+                MDTextField:
+                    id: asset_cost
+                    mode: "outlined"
+                    hint_text: "Asset Cost"
+                    size_hint_y: None
+                    height: "56dp"
+
+                MDTextField:
+                    id: salvage_value
+                    mode: "outlined"
+                    hint_text: "Salvage Value"
+                    size_hint_y: None
+                    height: "56dp"
+
+                MDTextField:
+                    id: useful_life
+                    mode: "outlined"
+                    hint_text: "Useful Life (years)"
+                    size_hint_y: None
+                    height: "56dp"
+
+                MDTextField:
+                    id: year_input
+                    mode: "outlined"
+                    hint_text: "Year (for declining balance)"
+                    size_hint_y: None
+                    height: "56dp"
+
+                MDTextField:
+                    id: gain
+                    mode: "outlined"
+                    hint_text: "Gain/Return from Investment"
+                    size_hint_y: None
+                    height: "56dp"
+
+                MDTextField:
+                    id: rate
+                    mode: "outlined"
+                    hint_text: "Discount Rate (%)"
+                    size_hint_y: None
+                    height: "56dp"
+
+                MDTextField:
+                    id: cashflows
+                    mode: "outlined"
+                    hint_text: "Cash Flows (comma separated)"
+                    size_hint_y: None
+                    height: "56dp"
+
+                MDLabel:
+                    text: "Calculations:"
+                    size_hint_y: None
+                    height: "32dp"
+
+                MDGridLayout:
+                    cols: 2
+                    spacing: "8dp"
+                    size_hint_y: None
+                    height: "48dp"
+
+                    MDButton:
+                        style: "tonal"
+                        on_release: root.calculate_straight_line()
+                        MDButtonText:
+                            text: "Straight Line"
+
+                    MDButton:
+                        style: "tonal"
+                        on_release: root.calculate_declining_balance()
+                        MDButtonText:
+                            text: "Declining Balance"
+
+                MDGridLayout:
+                    cols: 2
+                    spacing: "8dp"
+                    size_hint_y: None
+                    height: "48dp"
+
+                    MDButton:
+                        style: "tonal"
+                        on_release: root.calculate_roi()
+                        MDButtonText:
+                            text: "ROI"
+
+                    MDButton:
+                        style: "tonal"
+                        on_release: root.calculate_npv()
+                        MDButtonText:
+                            text: "NPV"
+
+                MDButton:
+                    style: "tonal"
+                    on_release: root.calculate_irr()
+                    MDButtonText:
+                        text: "IRR"
+
+                MDButton:
+                    style: "outlined"
+                    on_release: root.clear_inputs()
+                    MDButtonText:
+                        text: "Clear"
+
+                MDLabel:
+                    id: result
+                    text: ""
+                    font_style: "Headline"
+                    size_hint_y: None
+                    height: "48dp"
+                    halign: "center"

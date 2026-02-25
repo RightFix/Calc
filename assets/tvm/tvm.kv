@@ -1,0 +1,126 @@
+<TVM>
+    name: "tvm_screen"
+
+    MDFloatLayout:
+        MDNavigationRail:
+            id: nav_rail
+            pos_hint: {"x": 0, "top": 1}
+            MDNavigationRailItem:
+                icon: "calculator"
+                text: "Calc"
+                on_release: root.navigate_to("calculator_screen")
+            MDNavigationRailItem:
+                icon: "bank"
+                text: "TVM"
+                on_release: root.navigate_to("tvm_screen")
+            MDNavigationRailItem:
+                icon: "chart-line"
+                text: "Assets"
+                on_release: root.navigate_to("assets_val_screen")
+
+        MDScrollView:
+            size_hint_x: 0.75
+            pos_hint: {"x": 0.25}
+            size_hint_y: 1
+
+            MDBoxLayout:
+                orientation: "vertical"
+                padding: "16dp"
+                spacing: "16dp"
+                adaptive_height: True
+
+                MDLabel:
+                    text: "Time Value of Money"
+                    font_style: "Headline"
+                    size_hint_y: None
+                    height: "48dp"
+
+                MDLabel:
+                    text: "Enter values and select calculation:"
+                    size_hint_y: None
+                    height: "32dp"
+                    opacity: 0.7
+
+                MDTextField:
+                    id: principal
+                    mode: "outlined"
+                    hint_text: "Present Value (PV)"
+                    size_hint_y: None
+                    height: "56dp"
+
+                MDTextField:
+                    id: fv_input
+                    mode: "outlined"
+                    hint_text: "Future Value (FV)"
+                    size_hint_y: None
+                    height: "56dp"
+
+                MDTextField:
+                    id: rate
+                    mode: "outlined"
+                    hint_text: "Interest Rate (%)"
+                    size_hint_y: None
+                    height: "56dp"
+
+                MDTextField:
+                    id: periods
+                    mode: "outlined"
+                    hint_text: "Number of Periods (n)"
+                    size_hint_y: None
+                    height: "56dp"
+
+                MDGridLayout:
+                    cols: 2
+                    spacing: "8dp"
+                    size_hint_y: None
+                    height: "48dp"
+
+                    MDButton:
+                        style: "tonal"
+                        on_release: root.calculate_future_value()
+                        MDButtonText:
+                            text: "FV"
+
+                    MDButton:
+                        style: "tonal"
+                        on_release: root.calculate_present_value()
+                        MDButtonText:
+                            text: "PV"
+
+                MDGridLayout:
+                    cols: 2
+                    spacing: "8dp"
+                    size_hint_y: None
+                    height: "48dp"
+
+                    MDButton:
+                        style: "tonal"
+                        on_release: root.calculate_pmt()
+                        MDButtonText:
+                            text: "PMT"
+
+                    MDButton:
+                        style: "tonal"
+                        on_release: root.calculate_nper()
+                        MDButtonText:
+                            text: "Nper"
+
+                MDButton:
+                    style: "tonal"
+                    on_release: root.calculate_rate()
+                    MDButtonText:
+                        text: "Calculate Rate"
+
+                MDButton:
+                    style: "outlined"
+                    on_release: root.clear_inputs()
+                    MDButtonText:
+                        text: "Clear"
+
+                MDLabel:
+                    id: result
+                    text: ""
+                    font_style: "Headline"
+                    size_hint_y: None
+                    height: "48dp"
+                    halign: "center"

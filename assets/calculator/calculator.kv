@@ -1,0 +1,177 @@
+<Calculator>
+    name: "calculator_screen"
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Financial Calculator"
+            MDTopAppBarLeadingButton:
+                icon: "menu"
+                on_release: root.toggle_nav_drawer()
+
+        MDBottomNavigation:
+            MDBottomNavigationItem:
+                name: "calculator"
+                text: "Calc"
+                icon: "calculator"
+                CalculatorContent:
+
+            MDBottomNavigationItem:
+                name: "tvm"
+                text: "TVM"
+                icon: "bank"
+                on_tab_press: root.navigate_to("tvm_screen")
+
+            MDBottomNavigationItem:
+                name: "assets"
+                text: "Assets"
+                icon: "chart-line"
+                on_tab_press: root.navigate_to("assets_val_screen")
+
+<CalculatorContent>:
+    orientation: "vertical"
+    padding: "16dp"
+    spacing: "16dp"
+
+    MDLabel:
+        id: display
+        text: ""
+        font_style: "DisplayLarge"
+        halign: "right"
+        size_hint_y: 1.5
+
+    MDLabel:
+        id: result
+        text: ""
+        font_style: "Headline"
+        halign: "right"
+        size_hint_y: None
+        height: "32dp"
+        opacity: 0.7
+
+    MDGridLayout:
+        cols: 4
+        rows: 5
+        spacing: "8dp"
+        size_hint_y: 4
+
+        MDButton:
+            style: "outlined"
+            on_release: root.clear_display()
+            MDButtonText:
+                text: "C"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("÷")
+            MDButtonText:
+                text: "÷"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("×")
+            MDButtonText:
+                text: "×"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.delete_last()
+            MDButtonText:
+                text: "Del"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("7")
+            MDButtonText:
+                text: "7"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("8")
+            MDButtonText:
+                text: "8"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("9")
+            MDButtonText:
+                text: "9"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("-")
+            MDButtonText:
+                text: "-"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("4")
+            MDButtonText:
+                text: "4"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("5")
+            MDButtonText:
+                text: "5"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("6")
+            MDButtonText:
+                text: "6"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("+")
+            MDButtonText:
+                text: "+"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("1")
+            MDButtonText:
+                text: "1"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("2")
+            MDButtonText:
+                text: "2"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("3")
+            MDButtonText:
+                text: "3"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.calculate()
+            MDButtonText:
+                text: "="
+
+        MDButton:
+            style: "outlined"
+            on_release: root.percentage()
+            MDButtonText:
+                text: "%"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text("0")
+            MDButtonText:
+                text: "0"
+
+        MDButton:
+            style: "outlined"
+            on_release: root.append_text(".")
+            MDButtonText:
+                text: "."
+
+        MDButton:
+            style: "outlined"
+            on_release: root.use_answer()
+            MDButtonText:
+                text: "Ans"

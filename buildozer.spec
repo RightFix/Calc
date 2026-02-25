@@ -1,10 +1,10 @@
  [app]
 
 # (str) Title of your application
-title = Calculator
+title = Financial Calculator
 
 # (str) Package name
-package.name = calculator
+package.name = financialcalc
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.rightfix
@@ -16,7 +16,7 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 
 # (list) List of inclusions using pattern matching
-source.include_patterns = assets/*
+source.include_patterns = assets/*,assets/**/*
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
@@ -37,14 +37,14 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy
+requirements = python3,kivy,kivymd,pillow
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
 
 # (str) Presplash of the application
-#presplash.filename = %(source.dir)s/presplash.png
+presplash.filename = %(source.dir)s/presplash.png
 
 # (str) Icon of the application
 icon.filename = %(source.dir)s/icon.png
