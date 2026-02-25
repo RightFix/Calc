@@ -7,7 +7,7 @@ from assets.assets_val.assets_val import AssetsVal
 Window.softinput_mode = "pan"
 
 
-class CalcApp(MDApp):
+class MainApp(MDApp):
     screen_history = ["calculator_screen"]
 
     def build(self):
@@ -48,4 +48,4 @@ class CalcApp(MDApp):
             self.screen_history.append(current)
 
 
-CalcApp().run()
+MainApp().run()
