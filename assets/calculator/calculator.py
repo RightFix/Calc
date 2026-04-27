@@ -34,29 +34,30 @@ class CalculatorScreen(Screen):
 
         buttons_grid = GridLayout(cols=4, rows=5, spacing=6, size_hint_y=2)
         buttons = [
-            ("C", self.clear_display),
-            ("÷", lambda: self.append_text("÷")),
-            ("×", lambda: self.append_text("×")),
-            ("⌫", self.delete_last),
-            ("7", lambda: self.append_text("7")),
-            ("8", lambda: self.append_text("8")),
-            ("9", lambda: self.append_text("9")),
-            ("-", lambda: self.append_text("-")),
-            ("4", lambda: self.append_text("4")),
-            ("5", lambda: self.append_text("5")),
-            ("6", lambda: self.append_text("6")),
-            ("+", lambda: self.append_text("+")),
-            ("1", lambda: self.append_text("1")),
-            ("2", lambda: self.append_text("2")),
-            ("3", lambda: self.append_text("3")),
-            ("=", self.calculate),
-            ("%", self.percentage),
-            ("0", lambda: self.append_text("0")),
-            (".", lambda: self.append_text(".")),
-            ("Ans", self.use_answer),
+            ("C", "clear"),
+            ("÷", "÷"),
+            ("×", "×"),
+            ("⌫", "delete"),
+            ("7", "7"),
+            ("8", "8"),
+            ("9", "9"),
+            ("-", "-"),
+            ("4", "4"),
+            ("5", "5"),
+            ("6", "6"),
+            ("+", "+"),
+            ("1", "1"),
+            ("2", "2"),
+            ("3", "3"),
+            ("=", "calc"),
+            ("%", "percent"),
+            ("0", "0"),
+            (".", "."),
+            ("Ans", "ans"),
         ]
-        for text, callback in buttons:
-            btn = Button(text=text, font_size=22, on_press=callback)
+        for text, action in buttons:
+            btn = Button(text=text, font_size=22)
+            btn.bind(on_release=lambda btn, a=action: self.on_button_press(a))
             buttons_grid.add_widget(btn)
 
         main_layout.add_widget(buttons_grid)
@@ -71,6 +72,20 @@ class CalculatorScreen(Screen):
         main_layout.add_widget(nav_layout)
 
         self.add_widget(main_layout)
+
+    def on_button_press(self, action):
+        if action == "clear":
+            self.clear_display()
+        elif action == "delete":
+            self.delete_last()
+        elif action == "calc":
+            self.calculate()
+        elif action == "percent":
+            self.percentage()
+        elif action == "ans":
+            self.use_answer()
+        else:
+            self.append_text(action)
 
     def append_text(self, text):
         self.display_label.text += text
