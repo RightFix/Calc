@@ -1,6 +1,6 @@
 # Financial Calculator
 
-A KivyMD-based financial calculator application for Android. Built with Python, Kivy, and KivyMD.
+A Python-based financial calculator application for Android. Built with Kivy.
 
 ## Features
 
@@ -8,32 +8,28 @@ A KivyMD-based financial calculator application for Android. Built with Python, 
 - Basic arithmetic operations (+, -, ×, ÷)
 - Percentage calculations
 - Answer memory (Ans button)
+- Clear and backspace functionality
 
 ### Time Value of Money (TVM)
 - Future Value (FV)
 - Present Value (PV)
 - Payment (PMT)
-- Number of Periods (Nper)
-- Interest Rate calculation
+- Number of Periods (NPER)
 
 ### Assets Valuation
 - Straight-line depreciation
 - Declining balance depreciation
-- Return on Investment (ROI)
-- Net Present Value (NPV)
-- Internal Rate of Return (IRR)
 
 ## Requirements
 
 - Python 3.x
 - Kivy
-- KivyMD
-- Buildozer (for Android build)
+- Pillow
 
 ## Installation
 
 ```bash
-pip install kivy kivymd pillow
+pip install -r requirements.txt
 ```
 
 ## Running Locally
@@ -56,14 +52,22 @@ buildozer android debug
 
 ```
 calc(kivy)/
-├── main.py              # App entry point
-├── main.kv              # Screen manager
+├── main.py              # App entry point and Screen Manager
 ├── buildozer.spec       # Buildozer configuration
+├── requirements.txt     # Python dependencies
 ├── assets/
-│   ├── calculator/      # Calculator screen
-│   ├── tvm/             # Time Value of Money screen
-│   └── assets_val/     # Assets Valuation screen
+│   ├── calculator/      # Calculator screen (calculator.py)
+│   ├── tvm/             # Time Value of Money screen (tvm.py)
+│   └── assets_val/      # Assets Valuation screen (assets_val.py)
+└── .github/
+    └── workflows/      # GitHub Actions CI/CD
 ```
+
+## Screens
+
+1. **Calculator** - Basic calculator with modern UI
+2. **TVM** - Time Value of Money calculations
+3. **Assets** - Asset depreciation calculations
 
 ## License
 

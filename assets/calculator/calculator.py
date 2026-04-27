@@ -3,154 +3,145 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
-from kivy.uix.textinput import TextInput
-from kivy.graphics import Color, RoundedRectangle
+
 
 
 class CalculatorScreen(Screen):
     last_result = ""
-    BTN_COLOR = (0.2, 0.2, 0.2, 1)
-    BTN_TEXT_COLOR = (1, 1, 1, 1)
-    OP_BTN_COLOR = (0.3, 0.3, 0.3, 1)
-    NUM_BTN_COLOR = (0.15, 0.15, 0.15, 1)
-    CALC_BTN_COLOR = (0.0, 0.6, 0.8, 1)
+    BG_COLOR = (0.95, 0.95, 0.95, 1)
+    HEADER_COLOR = (0.2, 0.2, 0.3, 1)
+    NUM_BTN_COLOR = (0.25, 0.25, 0.25, 1)
+    OP_BTN_COLOR = (0.9, 0.6, 0.0, 1)
+    CALC_BTN_COLOR = (0.0, 0.5, 0.8, 1)
+    NAV_BTN_COLOR = (0.4, 0.4, 0.5, 1)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.build_ui()
 
     def build_ui(self):
-        with self.canvas.before:
-            Color(0.1, 0.1, 0.1, 1)
-            self.bg = RoundedRectangle(size=self.size, pos=self.pos)
-
-        main_layout = BoxLayout(orientation="vertical", spacing=8, padding=10)
-
-        app_bar = BoxLayout(
-            size_hint_y=None,
-            height=60,
-            padding=[15, 10],
-            pos_hint={"center_x": 0.5, "center_y": 0.5},
+        main_layout = BoxLayout(
+            orientation="vertical", spacing=10, padding=[15, 10, 15, 10]
         )
-        app_title = Label(
-            text="Calculator",
+
+        app_bar = BoxLayout(size_hint_y=None, height=65, padding=15)
+        header = Label(
+            text="[b]Calculator[/b]",
+            markup=True,
             font_size=28,
             halign="left",
-            valign="middle",
+            valign="center",
             color=(1, 1, 1, 1),
-            bold=True,
         )
-        app_bar.add_widget(app_title)
-        main_layout.add_widget(app_bar)
+        app_bar.add_widget(header)
+        # with app_bar.canvas.before:
+        #     Color(*self.HEADER_COLOR)
+        #     RoundedRectangle(size=app_bar.size, pos=app_bar.pos, radius=[15, 15, 0, 0])
+        # main_layout.add_widget(app_bar)
 
         display_container = BoxLayout(
-            orientation="vertical",
-            size_hint_y=0.25,
-            padding=[15, 5, 15, 10],
-            spacing=5,
+            orientation="vertical", size_hint_y=0.40, padding=[10, 5, 10, 5], spacing=2
         )
 
-        self.result_label = TextInput(
+        self.result_label = Label(
             text="",
+            halign="right",
             font_size=18,
-            halign="right",
-            # valign="bottom",
-            readonly=True,
-            background_color=(0.12, 0.12, 0.12, 1),
-            foreground_color=(0.7, 0.7, 0.7, 1),
-            cursor_color=(1, 1, 1, 0),
-            multiline=False,
-            size_hint_y=0.4,
-            border=[0, 0, 0, 0],
+            size_hint_x=1,
+            size_hint_y=0.35,
+            text_size=(None, None),
+            color=(1, 1, 1, 1),
+            padding=[10, 0],
         )
-        self.display_label = TextInput(
-            text="",
-            font_size=48,
+        self.display_label = Label(
+            text="0",
             halign="right",
-            # valign="bottom",
-            readonly=True,
-            background_color=(0.12, 0.12, 0.12, 1),
-            foreground_color=(1, 1, 1, 1),
-            cursor_color=(1, 1, 1, 0),
-            multiline=False,
-            size_hint_y=0.6,
-            border=[0, 0, 0, 0],
-            padding=[0, 5, 0, 5],
+            font_size=52,
+            size_hint_x=1,
+            size_hint_y=0.65,
+            text_size=(None, None),
+            color=(1, 1, 1, 1),
+            padding=[10, 0],
+        )
+        self.result_label.bind(
+            size=lambda inst, val: setattr(inst, "text_size", (inst.width, None))
+        )
+        self.display_label.bind(
+            size=lambda inst, val: setattr(inst, "text_size", (inst.width, None))
         )
         display_container.add_widget(self.result_label)
         display_container.add_widget(self.display_label)
         main_layout.add_widget(display_container)
 
-        buttons_grid = GridLayout(cols=4, rows=5, spacing=8, padding=[5, 5, 5, 5])
-        buttons_layout = [
-            ("C", "clear", self.BTN_COLOR),
-            ("÷", "÷", self.OP_BTN_COLOR),
-            ("×", "×", self.OP_BTN_COLOR),
-            ("⌫", "delete", self.OP_BTN_COLOR),
-            ("7", "7", self.NUM_BTN_COLOR),
-            ("8", "8", self.NUM_BTN_COLOR),
-            ("9", "9", self.NUM_BTN_COLOR),
-            ("-", "-", self.OP_BTN_COLOR),
-            ("4", "4", self.NUM_BTN_COLOR),
-            ("5", "5", self.NUM_BTN_COLOR),
-            ("6", "6", self.NUM_BTN_COLOR),
-            ("+", "+", self.OP_BTN_COLOR),
-            ("1", "1", self.NUM_BTN_COLOR),
-            ("2", "2", self.NUM_BTN_COLOR),
-            ("3", "3", self.NUM_BTN_COLOR),
-            ("=", "calc", self.CALC_BTN_COLOR),
-            ("%", "percent", self.BTN_COLOR),
-            ("0", "0", self.NUM_BTN_COLOR),
-            (".", ".", self.NUM_BTN_COLOR),
-            ("Ans", "ans", self.BTN_COLOR),
+        buttons_grid = GridLayout(
+            cols=4, rows=5, spacing=8, padding=[5, 10, 5, 5], size_hint_y=0.40
+        )
+        buttons = [
+            ("C", "clear", self.NUM_BTN_COLOR, (0.7, 0.3, 0.3, 1)),
+            ("÷", "÷", self.OP_BTN_COLOR, (1, 1, 1, 1)),
+            ("×", "×", self.OP_BTN_COLOR, (1, 1, 1, 1)),
+            ("⌫", "delete", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("7", "7", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("8", "8", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("9", "9", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("-", "-", self.OP_BTN_COLOR, (1, 1, 1, 1)),
+            ("4", "4", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("5", "5", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("6", "6", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("+", "+", self.OP_BTN_COLOR, (1, 1, 1, 1)),
+            ("1", "1", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("2", "2", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("3", "3", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("=", "calc", self.CALC_BTN_COLOR, (1, 1, 1, 1)),
+            ("%", "percent", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("0", "0", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            (".", ".", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("Ans", "ans", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
         ]
-
-        for text, action, color in buttons_layout:
+        for text, action, bg_color, text_color in buttons:
             btn = Button(
                 text=text,
                 font_size=28,
-                background_color=(0, 0, 0, 0),
-                color=color,
+                background_color=bg_color,
+                color=text_color,
                 bold=True,
             )
-            with btn.canvas.before:
-                Color(*color)
-                RoundedRectangle(
-                    size=btn.size,
-                    pos=btn.pos,
-                    radius=[15, 15, 15, 15],
-                )
             action_capture = action
-            btn.bind(
-                on_press=lambda btn: setattr(btn, "opacity", 0.7),
-            )
-            btn.bind(
-                on_release=lambda btn, a=action_capture: self.on_button_press(a),
-            )
+            btn.bind(on_release=lambda btn, a=action_capture: self.on_button_press(a))
             buttons_grid.add_widget(btn)
 
         main_layout.add_widget(buttons_grid)
 
-        nav_layout = BoxLayout(size_hint_y=None, height=60, spacing=10, padding=10)
+        nav_layout = BoxLayout(
+            size_hint_y=None, height=55, spacing=12, padding=[5, 10, 5, 5]
+        )
         tvm_btn = Button(
             text="TVM",
             font_size=18,
-            background_color=(0, 0.5, 0.7, 1),
+            background_color=self.NAV_BTN_COLOR,
             color=(1, 1, 1, 1),
             bold=True,
         )
         tvm_btn.bind(on_release=lambda x: self.go_to("tvm_screen"))
+
         assets_btn = Button(
             text="Assets",
             font_size=18,
-            background_color=(0, 0.5, 0.7, 1),
+            background_color=self.NAV_BTN_COLOR,
             color=(1, 1, 1, 1),
             bold=True,
         )
         assets_btn.bind(on_release=lambda x: self.go_to("assets_val_screen"))
+
         nav_layout.add_widget(tvm_btn)
         nav_layout.add_widget(assets_btn)
         main_layout.add_widget(nav_layout)
+
+        # with main_layout.canvas.before:
+        #     Color(*self.BG_COLOR)
+        #     RoundedRectangle(
+        #         size=main_layout.size, pos=main_layout.pos, radius=[15, 15, 15, 15]
+        #     )
 
         self.add_widget(main_layout)
 
@@ -166,18 +157,20 @@ class CalculatorScreen(Screen):
         elif action == "ans":
             self.use_answer()
         else:
-            self.append_text(action)
-
-    def append_text(self, text):
-        self.display_label.text += text
+            if self.display_label.text == "0":
+                self.display_label.text = action
+            else:
+                self.display_label.text += action
 
     def clear_display(self, *args):
-        self.display_label.text = ""
+        self.display_label.text = "0"
         self.result_label.text = ""
 
     def delete_last(self, *args):
-        if self.display_label.text:
+        if self.display_label.text and self.display_label.text != "0":
             self.display_label.text = self.display_label.text[:-1]
+        if not self.display_label.text:
+            self.display_label.text = "0"
 
     def calculate(self, *args):
         try:
@@ -200,7 +193,10 @@ class CalculatorScreen(Screen):
 
     def use_answer(self, *args):
         if self.last_result:
-            self.display_label.text += self.last_result
+            if self.display_label.text == "0":
+                self.display_label.text = self.last_result
+            else:
+                self.display_label.text += self.last_result
 
     def go_to(self, screen_name):
         self.manager.current = screen_name

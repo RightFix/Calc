@@ -8,7 +8,7 @@ from assets.assets_val.assets_val import AssetsValScreen
 Window.softinput_mode = "pan"
 
 
-class MainApp(App):
+class CalculatorApp(App):
     def build(self):
         sm = ScreenManager()
         sm.add_widget(CalculatorScreen(name="calculator_screen"))
@@ -17,4 +17,4 @@ class MainApp(App):
         return sm
 
 
-MainApp().run()
+CalculatorApp().run()

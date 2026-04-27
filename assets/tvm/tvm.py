@@ -8,62 +8,113 @@ import math
 
 
 class TVMScreen(Screen):
+    HEADER_COLOR = (0.15, 0.35, 0.55, 1)
+    BG_COLOR = (0.95, 0.95, 0.95, 1)
+    BTN_COLOR = (0.2, 0.5, 0.7, 1)
+    INPUT_BG = (0.85, 0.85, 0.85, 1)
+    NAV_BTN_COLOR = (0.4, 0.4, 0.5, 1)
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.build_ui()
 
     def build_ui(self):
-        main_layout = BoxLayout(orientation="vertical", spacing=5, padding=5)
+        main_layout = BoxLayout(
+            orientation="vertical", spacing=10, padding=[15, 10, 15, 10]
+        )
 
-        app_bar = BoxLayout(size_hint_y=None, height=50, padding=10)
-        app_bar.add_widget(Label(text="TVM Calculator", font_size=20, halign="left"))
+        app_bar = BoxLayout(size_hint_y=None, height=65, padding=15)
+        header = Label(
+            text="[b]TVM Calculator[/b]",
+            markup=True,
+            font_size=26,
+            halign="left",
+            valign="center",
+            color=(1, 1, 1, 1),
+        )
+        app_bar.add_widget(header)
+
         main_layout.add_widget(app_bar)
 
-        inputs_layout = GridLayout(cols=2, size_hint_y=0.5, padding=10, spacing=10)
-        inputs_layout.add_widget(Label(text="Present Value (PV):", halign="right"))
-        self.pv_input = TextInput(hint_text="0", multiline=False, input_filter="float")
-        inputs_layout.add_widget(self.pv_input)
-
-        inputs_layout.add_widget(Label(text="Future Value (FV):", halign="right"))
-        self.fv_input = TextInput(hint_text="0", multiline=False, input_filter="float")
-        inputs_layout.add_widget(self.fv_input)
-
-        inputs_layout.add_widget(Label(text="Rate (%):", halign="right"))
-        self.rate_input = TextInput(
-            hint_text="0", multiline=False, input_filter="float"
+        inputs_layout = BoxLayout(
+            orientation="vertical", size_hint_y=0.40, spacing=15, padding=10
         )
-        inputs_layout.add_widget(self.rate_input)
 
-        inputs_layout.add_widget(Label(text="Periods:", halign="right"))
-        self.periods_input = TextInput(
-            hint_text="0", multiline=False, input_filter="float"
-        )
-        inputs_layout.add_widget(self.periods_input)
+        inputs_config = [
+            ("Present Value (PV):", "0"),
+            ("Future Value (FV):", "0"),
+            ("Rate (%):", "0"),
+            ("Periods:", "0"),
+        ]
+
+        for label_text, hint in inputs_config:
+            row = BoxLayout(size_hint_y=1, spacing=10)
+            lbl = Label(
+                text=label_text,
+                halign="right",
+                valign="center",
+                font_size=16,
+                size_hint_x=0.35,
+                color=(0.2, 0.2, 0.2, 1),
+            )
+            inp = TextInput(
+                hint_text=hint,
+                multiline=False,
+                input_filter="float",
+                font_size=18,
+                halign="left",
+                padding=[15, 10, 10, 10],
+                background_color=self.INPUT_BG,
+                foreground_color=(0.2, 0.2, 0.2, 1),
+                cursor_color=(0.2, 0.5, 0.8, 1),
+                size_hint_x=0.65,
+            )
+            row.add_widget(lbl)
+            row.add_widget(inp)
+            inputs_layout.add_widget(row)
+            if label_text == "Present Value (PV):":
+                self.pv_input = inp
+            elif label_text == "Future Value (FV):":
+                self.fv_input = inp
+            elif label_text == "Rate (%):":
+                self.rate_input = inp
+            else:
+                self.periods_input = inp
 
         main_layout.add_widget(inputs_layout)
 
         buttons_layout = GridLayout(
-            cols=2, rows=3, size_hint_y=0.3, padding=5, spacing=10
+            cols=2, rows=3, size_hint_y=0.30, padding=10, spacing=12
         )
-        buttons_layout.add_widget(
-            Button(text="Future Value", on_press=self.calculate_future_value)
-        )
-        buttons_layout.add_widget(
-            Button(text="Present Value", on_press=self.calculate_present_value)
-        )
-        buttons_layout.add_widget(
-            Button(text="Payment (PMT)", on_press=self.calculate_pmt)
-        )
-        buttons_layout.add_widget(
-            Button(text="Periods (NPER)", on_press=self.calculate_nper)
-        )
-        buttons_layout.add_widget(Button(text="Clear", on_press=self.clear_inputs))
-        buttons_layout.add_widget(
-            Button(text="Exit", on_press=lambda x: self.go_to("calculator_screen"))
-        )
+        buttons_config = [
+            ("Future Value", self.calculate_future_value),
+            ("Present Value", self.calculate_present_value),
+            ("Payment (PMT)", self.calculate_pmt),
+            ("Periods (NPER)", self.calculate_nper),
+            ("Clear", self.clear_inputs),
+            ("Back", lambda x: self.go_to("calculator_screen")),
+        ]
+
+        for text, callback in buttons_config:
+            btn = Button(
+                text=text,
+                font_size=18,
+                background_color=self.BTN_COLOR,
+                color=(1, 1, 1, 1),
+                bold=True,
+            )
+            btn.bind(on_release=callback)
+            buttons_layout.add_widget(btn)
+
         main_layout.add_widget(buttons_layout)
 
-        self.result_label = Label(text="Result: ", font_size=18, size_hint_y=0.2)
+        self.result_label = Label(
+            text="Enter values and select calculation",
+            font_size=16,
+            size_hint_y=0.15,
+            halign="center",
+            color=(0.2, 0.2, 0.2, 1),
+        )
         main_layout.add_widget(self.result_label)
 
         self.add_widget(main_layout)
@@ -125,7 +176,7 @@ class TVMScreen(Screen):
         self.fv_input.text = ""
         self.rate_input.text = ""
         self.periods_input.text = ""
-        self.result_label.text = "Result: "
+        self.result_label.text = "Enter values and select calculation"
 
     def go_to(self, screen_name):
         self.manager.current = screen_name

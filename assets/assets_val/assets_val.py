@@ -4,61 +4,114 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
+from kivy.graphics import Color, RoundedRectangle
 
 
 class AssetsValScreen(Screen):
+    HEADER_COLOR = (0.25, 0.45, 0.25, 1)
+    BG_COLOR = (0.95, 0.95, 0.95, 1)
+    BTN_COLOR = (0.3, 0.6, 0.3, 1)
+    INPUT_BG = (0.85, 0.85, 0.85, 1)
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.build_ui()
 
     def build_ui(self):
-        main_layout = BoxLayout(orientation="vertical", spacing=5, padding=5)
+        main_layout = BoxLayout(
+            orientation="vertical", spacing=10, padding=[15, 10, 15, 10]
+        )
 
-        app_bar = BoxLayout(size_hint_y=None, height=50, padding=10)
-        app_bar.add_widget(Label(text="Asset Valuation", font_size=20, halign="left"))
+        app_bar = BoxLayout(size_hint_y=None, height=65, padding=15)
+        header = Label(
+            text="[b]Asset Valuation[/b]",
+            markup=True,
+            font_size=26,
+            halign="left",
+            valign="center",
+            color=(1, 1, 1, 1),
+        )
+        app_bar.add_widget(header)
+
         main_layout.add_widget(app_bar)
 
-        inputs_layout = GridLayout(cols=2, size_hint_y=0.5, padding=10, spacing=10)
-        inputs_layout.add_widget(Label(text="Asset Cost:", halign="right"))
-        self.asset_cost_input = TextInput(
-            hint_text="0", multiline=False, input_filter="float"
+        inputs_layout = BoxLayout(
+            orientation="vertical", size_hint_y=0.40, spacing=15, padding=10
         )
-        inputs_layout.add_widget(self.asset_cost_input)
 
-        inputs_layout.add_widget(Label(text="Salvage Value:", halign="right"))
-        self.salvage_input = TextInput(
-            hint_text="0", multiline=False, input_filter="float"
-        )
-        inputs_layout.add_widget(self.salvage_input)
+        inputs_config = [
+            ("Asset Cost:", "0"),
+            ("Salvage Value:", "0"),
+            ("Useful Life (years):", "0"),
+            ("Year:", "1"),
+        ]
 
-        inputs_layout.add_widget(Label(text="Useful Life (years):", halign="right"))
-        self.life_input = TextInput(
-            hint_text="0", multiline=False, input_filter="float"
-        )
-        inputs_layout.add_widget(self.life_input)
-
-        inputs_layout.add_widget(Label(text="Year:", halign="right"))
-        self.year_input = TextInput(hint_text="1", multiline=False, input_filter="int")
-        inputs_layout.add_widget(self.year_input)
+        for label_text, hint in inputs_config:
+            row = BoxLayout(size_hint_y=1, spacing=10)
+            lbl = Label(
+                text=label_text,
+                halign="right",
+                valign="center",
+                font_size=16,
+                size_hint_x=0.35,
+                color=(0.2, 0.2, 0.2, 1),
+            )
+            inp = TextInput(
+                hint_text=hint,
+                multiline=False,
+                input_filter="float",
+                font_size=18,
+                halign="left",
+                padding=[15, 10, 10, 10],
+                background_color=self.INPUT_BG,
+                foreground_color=(0.2, 0.2, 0.2, 1),
+                cursor_color=(0.3, 0.6, 0.3, 1),
+                size_hint_x=0.65,
+            )
+            row.add_widget(lbl)
+            row.add_widget(inp)
+            inputs_layout.add_widget(row)
+            if label_text == "Asset Cost:":
+                self.asset_cost_input = inp
+            elif label_text == "Salvage Value:":
+                self.salvage_input = inp
+            elif label_text == "Useful Life (years):":
+                self.life_input = inp
+            else:
+                self.year_input = inp
 
         main_layout.add_widget(inputs_layout)
 
         buttons_layout = GridLayout(
-            cols=2, rows=2, size_hint_y=0.3, padding=5, spacing=10
+            cols=2, rows=2, size_hint_y=0.25, padding=10, spacing=12
         )
-        buttons_layout.add_widget(
-            Button(text="Straight Line", on_press=self.calculate_straight_line)
-        )
-        buttons_layout.add_widget(
-            Button(text="Declining Balance", on_press=self.calculate_declining_balance)
-        )
-        buttons_layout.add_widget(Button(text="Clear", on_press=self.clear_inputs))
-        buttons_layout.add_widget(
-            Button(text="Exit", on_press=lambda x: self.go_to("calculator_screen"))
-        )
+        buttons_config = [
+            ("Straight Line", self.calculate_straight_line),
+            ("Declining Balance", self.calculate_declining_balance),
+            ("Clear", self.clear_inputs),
+            ("Back", lambda x: self.go_to("calculator_screen")),
+        ]
+
+        for text, callback in buttons_config:
+            btn = Button(
+                text=text,
+                font_size=18,
+                background_color=self.BTN_COLOR,
+                color=(1, 1, 1, 1),
+                bold=True,
+            )
+            btn.bind(on_release=callback)
+            buttons_layout.add_widget(btn)
+
         main_layout.add_widget(buttons_layout)
 
-        self.result_label = Label(text="Result: ", font_size=18, size_hint_y=0.2)
+        self.result_label = Label(
+            text="Select calculation method",
+            font_size=16,
+            size_hint_y=0.20,
+            halign="center",
+            color=(0.2, 0.2, 0.2, 1),
+        )
         main_layout.add_widget(self.result_label)
 
         self.add_widget(main_layout)
@@ -81,7 +134,7 @@ class AssetsValScreen(Screen):
             cost = float(self.asset_cost_input.text or 0)
             salvage = float(self.salvage_input.text or 0)
             life = float(self.life_input.text or 0)
-            year = int(self.year_input.text or 1)
+            year = int(float(self.year_input.text or 1))
             if life <= 0:
                 self.result_label.text = "Error: Useful life must be positive"
                 return
@@ -100,7 +153,7 @@ class AssetsValScreen(Screen):
         self.salvage_input.text = ""
         self.life_input.text = ""
         self.year_input.text = "1"
-        self.result_label.text = "Result: "
+        self.result_label.text = "Select calculation method"
 
     def go_to(self, screen_name):
         self.manager.current = screen_name
