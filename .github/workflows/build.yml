@@ -15,6 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Used to cache dependencies with a timeout
       - name: Get Date
         id: get-date
         run: |
@@ -53,6 +54,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-android-ndk-
 
+      # Install dependencies
       - name: Install dependencies
         run: |
           sudo apt update
@@ -99,33 +101,34 @@ jobs:
             libssl-dev \
             automake
 
-      - name: Setup Java 17
+      # Set up Java 17 required by Gradle
+      - name: Setup Java 17 required by Gradle
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
+          distribution: 'temurin'  # or 'zulu', 'liberica', etc.
           java-version: '17'
 
+      # Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.11' #set your python version
 
+      # Install pip dependencies
       - name: Install pip dependencies
         run: |
           pip install --upgrade pip
           pip install buildozer cython==0.29.33 git+https://github.com/kivy/plyer.git
 
-      - name: Copy GitHub spec file
-        run: |
-          if [ -f buildozer_github.spec ]; then
-            cp buildozer_github.spec buildozer.spec
-          fi
-
+      # Build with Buildozer
       - name: Build with Buildozer
         id: buildozer
         run: |
           yes | buildozer -v android debug
+        # yes | buildozer -v android release
+        # run this for generating aab (Android App Bundle) [Required by google play]
 
+      # Upload artifacts
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
