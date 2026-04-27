@@ -6,3 +6,4 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 buildozer_default.spec
+buildozer_github.spec
