@@ -1,0 +1,23 @@
+﻿2026-04-27T19:16:38.9169572Z ##[group]Run actions/cache@v4
+2026-04-27T19:16:38.9169914Z with:
+2026-04-27T19:16:38.9170204Z   path: ~/.buildozer/android/platform/android-ndk-r25b
+2026-04-27T19:16:38.9170590Z   key: Linux-android-ndk-
+2026-04-27T19:16:38.9170886Z   restore-keys: Linux-android-ndk-
+
+2026-04-27T19:16:38.9171226Z   enableCrossOsArchive: false
+2026-04-27T19:16:38.9171531Z   fail-on-cache-miss: false
+2026-04-27T19:16:38.9171809Z   lookup-only: false
+2026-04-27T19:16:38.9172059Z   save-always: false
+2026-04-27T19:16:38.9172293Z env:
+2026-04-27T19:16:38.9172500Z   date: 20260427
+2026-04-27T19:16:38.9172745Z ##[endgroup]
+2026-04-27T19:16:39.3750976Z Cache hit for: Linux-android-ndk-
+2026-04-27T19:16:40.6761811Z Received 8388608 of 499756357 (1.7%), 8.0 MBs/sec
+2026-04-27T19:16:41.7437489Z Received 134217728 of 499756357 (26.9%), 61.9 MBs/sec
+2026-04-27T19:16:42.7459738Z Received 264241152 of 499756357 (52.9%), 82.1 MBs/sec
+2026-04-27T19:16:43.7463876Z Received 394264576 of 499756357 (78.9%), 92.4 MBs/sec
+2026-04-27T19:16:44.7343873Z Received 499756357 of 499756357 (100.0%), 94.2 MBs/sec
+2026-04-27T19:16:44.7346333Z Cache Size: ~477 MB (499756357 B)
+2026-04-27T19:16:44.7397180Z [command]/usr/bin/tar -xf /home/runner/work/_temp/fe145b20-273c-4095-a1a1-4c1d7bd7141f/cache.tzst -P -C /home/runner/work/Calc/Calc --use-compress-program unzstd
+2026-04-27T19:16:48.9875384Z Cache restored successfully
+2026-04-27T19:16:49.0796162Z Cache restored from key: Linux-android-ndk-

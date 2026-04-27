@@ -1,0 +1,374 @@
+﻿2026-04-27T19:18:03.3597118Z ##[group]Run yes | buildozer -v android debug
+2026-04-27T19:18:03.3597440Z [36;1myes | buildozer -v android debug[0m
+2026-04-27T19:18:03.3647501Z shell: /usr/bin/bash -e {0}
+2026-04-27T19:18:03.3647709Z env:
+2026-04-27T19:18:03.3647859Z   date: 20260427
+2026-04-27T19:18:03.3648119Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+2026-04-27T19:18:03.3648501Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+2026-04-27T19:18:03.3648846Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-04-27T19:18:03.3649171Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-04-27T19:18:03.3649492Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-04-27T19:18:03.3649802Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-04-27T19:18:03.3650108Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-04-27T19:18:03.3650405Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-04-27T19:18:03.3650686Z ##[endgroup]
+2026-04-27T19:18:05.4005718Z [0m[1;34m# Check configuration tokens[0m
+2026-04-27T19:18:05.4006258Z [0m[1;34m# Ensure build layout[0m
+2026-04-27T19:18:05.4006948Z [0m[1;30m# Create directory /home/runner/work/Calc/Calc/bin[0m
+2026-04-27T19:18:05.4007454Z [0m[1;34m# Check configuration tokens[0m
+2026-04-27T19:18:05.4007856Z [0m[1;34m# Preparing build[0m
+2026-04-27T19:18:05.4008262Z [0m[1;34m# Check requirements for android[0m
+2026-04-27T19:18:05.4008691Z [0m[1;30m# Search for Git (git)[0m
+2026-04-27T19:18:05.4009120Z [0m[1;30m#  -> found at /usr/bin/git[0m
+2026-04-27T19:18:05.4009514Z [0m[1;30m# Search for Cython (cython)[0m
+2026-04-27T19:18:05.4010052Z [0m[1;30m#  -> found at /opt/hostedtoolcache/Python/3.11.15/x64/bin/cython[0m
+2026-04-27T19:18:05.4010593Z [0m[1;30m# Search for Java compiler (javac)[0m
+2026-04-27T19:18:05.4011424Z [0m[1;30m#  -> found at /usr/lib/jvm/temurin-17-jdk-amd64/bin/javac[0m
+2026-04-27T19:18:05.4011933Z [0m[1;30m# Search for Java keytool (keytool)[0m
+2026-04-27T19:18:05.4012478Z [0m[1;30m#  -> found at /usr/lib/jvm/temurin-17-jdk-amd64/bin/keytool[0m
+2026-04-27T19:18:05.4012792Z [0m[1;34m# Install platform[0m
+2026-04-27T19:18:05.4013104Z [0m[1;30m# Run ['git', 'config', '--get', 'remote.origin.url'][0m
+2026-04-27T19:18:05.4013553Z [0m[1;30m# Cwd /home/runner/work/Calc/Calc/.buildozer/android/platform/python-for-android[0m
+2026-04-27T19:18:05.4013958Z https://github.com/kivy/python-for-android.git
+2026-04-27T19:18:05.4025802Z [0m[1;30m# Run ['git', 'branch', '-vv'][0m
+2026-04-27T19:18:05.4026262Z [0m[1;30m# Cwd /home/runner/work/Calc/Calc/.buildozer/android/platform/python-for-android[0m
+2026-04-27T19:18:05.4026819Z * master 957a3e5f [origin/master] Merge pull request #2959 from kivy/release-2024.01.21
+2026-04-27T19:18:06.4040140Z [0m[1;30m# Run ['/opt/hostedtoolcache/Python/3.11.15/x64/bin/python', '-m', 'pip', 'install', '-q', '--user', 'appdirs', 'colorama>=0.3.3', 'jinja2', 'sh>=1.10, <2.0; sys_platform!="win32"', 'build', 'toml', 'packaging', 'setuptools'][0m
+2026-04-27T19:18:06.4041478Z [0m[1;30m# Cwd None[0m
+2026-04-27T19:18:07.2141072Z [WARNING]: prerequisites.py is experimental and does not support all prerequisites yet.
+2026-04-27T19:18:07.2141688Z [WARNING]: Please report any issues to the python-for-android issue tracker.
+2026-04-27T19:18:07.2142399Z [0m[1;34m# Apache ANT found at /home/runner/.buildozer/android/platform/apache-ant-1.9.4[0m
+2026-04-27T19:18:07.2142903Z [0m[1;34m# Android SDK found at /home/runner/.buildozer/android/platform/android-sdk[0m
+2026-04-27T19:18:07.2143336Z [0m[1;34m# Recommended android's NDK version by p4a is: 25b[0m
+2026-04-27T19:18:07.2143771Z [0m[1;34m# Android NDK found at /home/runner/.buildozer/android/platform/android-ndk-r25b[0m
+2026-04-27T19:18:07.2144872Z [0m[1;30m# Run ['/opt/hostedtoolcache/Python/3.11.15/x64/bin/python', '-m', 'pythonforandroid.toolchain', 'aab', '-h', '--color=always', '--storage-dir=/home/runner/work/Calc/Calc/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a', '--ndk-api=21', '--ignore-setup-py', '--debug'][0m
+2026-04-27T19:18:07.2146911Z [0m[1;30m# Cwd /home/runner/work/Calc/Calc/.buildozer/android/platform/python-for-android[0m
+2026-04-27T19:18:07.2731140Z [WARNING]: prerequisites.py is experimental and does not support all prerequisites yet.
+2026-04-27T19:18:07.2732026Z [WARNING]: Please report any issues to the python-for-android issue tracker.
+2026-04-27T19:18:07.2790633Z usage: toolchain.py aab [-h] [--debug] [--color {always,never,auto}]
+2026-04-27T19:18:07.2791199Z                         [--sdk-dir SDK_DIR] [--ndk-dir NDK_DIR]
+2026-04-27T19:18:07.2791609Z                         [--android-api ANDROID_API]
+2026-04-27T19:18:07.2791916Z                         [--ndk-version NDK_VERSION] [--ndk-api NDK_API]
+2026-04-27T19:18:07.2792224Z                         [--symlink-bootstrap-files]
+2026-04-27T19:18:07.2792488Z                         [--storage-dir STORAGE_DIR] [--arch ARCH]
+2026-04-27T19:18:07.2792788Z                         [--dist-name DIST_NAME] [--requirements REQUIREMENTS]
+2026-04-27T19:18:07.2793083Z                         [--recipe-blacklist RECIPE_BLACKLIST]
+2026-04-27T19:18:07.2793368Z                         [--blacklist-requirements BLACKLIST_REQUIREMENTS]
+2026-04-27T19:18:07.2793687Z                         [--bootstrap BOOTSTRAP] [--hook HOOK] [--force-build]
+2026-04-27T19:18:07.2793994Z                         [--no-force-build] [--require-perfect-match]
+2026-04-27T19:18:07.2794316Z                         [--no-require-perfect-match] [--allow-replace-dist]
+2026-04-27T19:18:07.2794593Z                         [--no-allow-replace-dist]
+2026-04-27T19:18:07.2794840Z                         [--local-recipes LOCAL_RECIPES]
+2026-04-27T19:18:07.2795101Z                         [--activity-class-name ACTIVITY_CLASS_NAME]
+2026-04-27T19:18:07.2795625Z                         [--service-class-name SERVICE_CLASS_NAME]
+2026-04-27T19:18:07.2795906Z                         [--java-build-tool {auto,ant,gradle}] [--copy-libs]
+2026-04-27T19:18:07.2796189Z                         [--no-copy-libs] [--add-asset ASSETS]
+2026-04-27T19:18:07.2796462Z                         [--add-resource RESOURCES] [--private PRIVATE]
+2026-04-27T19:18:07.2804924Z                         [--use-setup-py] [--ignore-setup-py] [--release]
+2026-04-27T19:18:07.2805413Z                         [--with-debug-symbols] [--keystore KEYSTORE]
+2026-04-27T19:18:07.2805837Z                         [--signkey SIGNKEY] [--keystorepw KEYSTOREPW]
+2026-04-27T19:18:07.2806160Z                         [--signkeypw SIGNKEYPW]
+2026-04-27T19:18:07.2806314Z 
+2026-04-27T19:18:07.2806386Z options:
+2026-04-27T19:18:07.2806776Z   -h, --help            show this help message and exit
+2026-04-27T19:18:07.2807091Z   --debug               Display debug output and all build info
+2026-04-27T19:18:07.2807375Z   --color {always,never,auto}
+2026-04-27T19:18:07.2807642Z                         Enable or disable color output (default enabled on
+2026-04-27T19:18:07.2807906Z                         tty)
+2026-04-27T19:18:07.2808104Z   --sdk-dir SDK_DIR, --sdk_dir SDK_DIR
+2026-04-27T19:18:07.2808366Z                         The filepath where the Android SDK is installed
+2026-04-27T19:18:07.2808620Z   --ndk-dir NDK_DIR, --ndk_dir NDK_DIR
+2026-04-27T19:18:07.2808866Z                         The filepath where the Android NDK is installed
+2026-04-27T19:18:07.2809154Z   --android-api ANDROID_API, --android_api ANDROID_API
+2026-04-27T19:18:07.2809450Z                         The Android API level to build against defaults to 33
+2026-04-27T19:18:07.2809726Z                         if not specified.
+2026-04-27T19:18:07.2809965Z   --ndk-version NDK_VERSION, --ndk_version NDK_VERSION
+2026-04-27T19:18:07.2810266Z                         DEPRECATED: the NDK version is now found automatically
+2026-04-27T19:18:07.2810535Z                         or not at all.
+2026-04-27T19:18:07.2810818Z   --ndk-api NDK_API     The Android API level to compile against. This should
+2026-04-27T19:18:07.2811339Z                         be your *minimal supported* API, not normally the same
+2026-04-27T19:18:07.2811650Z                         as your --android-api. Defaults to min(ANDROID_API,
+2026-04-27T19:18:07.2811922Z                         21) if not specified.
+2026-04-27T19:18:07.2812178Z   --symlink-bootstrap-files, --ssymlink_bootstrap_files
+2026-04-27T19:18:07.2812470Z                         If True, symlinks the bootstrap files creation. This
+2026-04-27T19:18:07.2812771Z                         is useful for development only, it could also cause
+2026-04-27T19:18:07.2813023Z                         weird problems.
+2026-04-27T19:18:07.2813235Z   --storage-dir STORAGE_DIR
+2026-04-27T19:18:07.2813475Z                         Primary storage directory for downloads and builds
+2026-04-27T19:18:07.2813775Z                         (default: /home/runner/.local/share/python-for-
+2026-04-27T19:18:07.2814026Z                         android)
+2026-04-27T19:18:07.2814239Z   --arch ARCH           The archs to build for.
+2026-04-27T19:18:07.2814489Z   --dist-name DIST_NAME, --dist_name DIST_NAME
+2026-04-27T19:18:07.2814750Z                         The name of the distribution to use or create
+2026-04-27T19:18:07.2814997Z   --requirements REQUIREMENTS
+2026-04-27T19:18:07.2815242Z                         Dependencies of your app, should be recipe names or
+2026-04-27T19:18:07.2815541Z                         Python modules. NOT NECESSARY if you are using Python
+2026-04-27T19:18:07.2815813Z                         3 with --use-setup-py
+2026-04-27T19:18:07.2816028Z   --recipe-blacklist RECIPE_BLACKLIST
+2026-04-27T19:18:07.2816268Z                         Blacklist an internal recipe from use. Allows
+2026-04-27T19:18:07.2816698Z                         disabling Python 3 core modules to save size
+2026-04-27T19:18:07.2816979Z   --blacklist-requirements BLACKLIST_REQUIREMENTS
+2026-04-27T19:18:07.2817379Z                         Blacklist an internal recipe from use. Allows
+2026-04-27T19:18:07.2817655Z                         disabling Python 3 core modules to save size
+2026-04-27T19:18:07.2817907Z   --bootstrap BOOTSTRAP
+2026-04-27T19:18:07.2818140Z                         The bootstrap to build with. Leave unset to choose
+2026-04-27T19:18:07.2818399Z                         automatically.
+2026-04-27T19:18:07.2818677Z   --hook HOOK           Filename to a module that contains python-for-android
+2026-04-27T19:18:07.2818950Z                         hooks
+2026-04-27T19:18:07.2819195Z   --local-recipes LOCAL_RECIPES, --local_recipes LOCAL_RECIPES
+2026-04-27T19:18:07.2819487Z                         Directory to look for local recipes
+2026-04-27T19:18:07.2819735Z   --activity-class-name ACTIVITY_CLASS_NAME
+2026-04-27T19:18:07.2819999Z                         The full java class name of the main activity
+2026-04-27T19:18:07.2820250Z   --service-class-name SERVICE_CLASS_NAME
+2026-04-27T19:18:07.2820516Z                         Full java package name of the PythonService class
+2026-04-27T19:18:07.2820781Z   --java-build-tool {auto,ant,gradle}
+2026-04-27T19:18:07.2821035Z                         The java build tool to use when packaging the APK,
+2026-04-27T19:18:07.2821329Z                         defaults to automatically selecting an appropriate
+2026-04-27T19:18:07.2821572Z                         tool.
+2026-04-27T19:18:07.2821823Z   --add-asset ASSETS    Put this in the assets folder in the apk.
+2026-04-27T19:18:07.2822086Z   --add-resource RESOURCES
+2026-04-27T19:18:07.2822300Z                         Put this in the res folder in the apk.
+2026-04-27T19:18:07.2822601Z   --private PRIVATE     the directory with the app source code files
+2026-04-27T19:18:07.2822899Z                         (containing your main.py entrypoint)
+2026-04-27T19:18:07.2823198Z   --use-setup-py        Process the setup.py of a project if present.
+2026-04-27T19:18:07.2823475Z                         (Experimental!
+2026-04-27T19:18:07.2823757Z   --ignore-setup-py     Don't run the setup.py of a project if present. This
+2026-04-27T19:18:07.2824093Z                         may be required if the setup.py is not designed to
+2026-04-27T19:18:07.2824498Z                         work inside p4a (e.g. by installing dependencies that
+2026-04-27T19:18:07.2824784Z                         won't work or aren't desired on Android
+2026-04-27T19:18:07.2825084Z   --release             Build your app as a non-debug release build. (Disables
+2026-04-27T19:18:07.2825384Z                         gdb debugging among other things)
+2026-04-27T19:18:07.2825674Z   --with-debug-symbols  Will keep debug symbols from `.so` files.
+2026-04-27T19:18:07.2826016Z   --keystore KEYSTORE   Keystore for JAR signing key, will use jarsigner
+2026-04-27T19:18:07.2826334Z                         default if not specified (release build only)
+2026-04-27T19:18:07.2826822Z   --signkey SIGNKEY     Key alias to sign PARSER_APK. with (release build
+2026-04-27T19:18:07.2827115Z                         only)
+2026-04-27T19:18:07.2827305Z   --keystorepw KEYSTOREPW
+2026-04-27T19:18:07.2827503Z                         Password for keystore
+2026-04-27T19:18:07.2827731Z   --signkeypw SIGNKEYPW
+2026-04-27T19:18:07.2827930Z                         Password for key alias
+2026-04-27T19:18:07.2828080Z 
+2026-04-27T19:18:07.2828230Z   Whether to force compilation of a new distribution
+2026-04-27T19:18:07.2828403Z 
+2026-04-27T19:18:07.2828479Z   --force-build
+2026-04-27T19:18:07.2828667Z   --no-force-build      (this is the default)
+2026-04-27T19:18:07.2828894Z   --require-perfect-match
+2026-04-27T19:18:07.2829082Z   --no-require-perfect-match
+2026-04-27T19:18:07.2829280Z                         (this is the default)
+2026-04-27T19:18:07.2829633Z   --allow-replace-dist  (this is the default)
+2026-04-27T19:18:07.2829949Z   --no-allow-replace-dist
+2026-04-27T19:18:07.2830186Z   --copy-libs
+2026-04-27T19:18:07.2830354Z   --no-copy-libs        (this is the default)
+2026-04-27T19:18:07.3390807Z [WARNING]: prerequisites.py is experimental and does not support all prerequisites yet.
+2026-04-27T19:18:07.3391433Z [WARNING]: Please report any issues to the python-for-android issue tracker.
+2026-04-27T19:18:07.3392023Z [0m[1;34m# Check application requirements[0m
+2026-04-27T19:18:07.3392290Z [0m[1;34m# Compile platform[0m
+2026-04-27T19:18:07.3393705Z [0m[1;30m# Run ['/opt/hostedtoolcache/Python/3.11.15/x64/bin/python', '-m', 'pythonforandroid.toolchain', 'create', '--dist_name=financialcalc', '--bootstrap=sdl2', '--requirements=python3,kivy,pillow,android', '--arch=arm64-v8a', '--arch=armeabi-v7a', '--copy-libs', '--color=always', '--storage-dir=/home/runner/work/Calc/Calc/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a', '--ndk-api=21', '--ignore-setup-py', '--debug'][0m
+2026-04-27T19:18:07.3395072Z [0m[1;30m# Cwd /home/runner/work/Calc/Calc/.buildozer/android/platform/python-for-android[0m
+2026-04-27T19:18:07.3844051Z [WARNING]: prerequisites.py is experimental and does not support all prerequisites yet.
+2026-04-27T19:18:07.3844754Z [WARNING]: Please report any issues to the python-for-android issue tracker.
+2026-04-27T19:18:07.3892837Z [1m[INFO][0m:    Will compile for the following archs: arm64-v8a, armeabi-v7a
+2026-04-27T19:18:07.3893283Z [1m[INFO][0m:    Found Android API target in $ANDROIDAPI: 34
+2026-04-27T19:18:09.6097692Z [1m[INFO][0m:    Available Android APIs are (34, 36)
+2026-04-27T19:18:09.6098167Z [1m[INFO][0m:    Requested API target 34 is available, continuing.
+2026-04-27T19:18:09.6098669Z [1m[INFO][0m:    Found NDK dir in $ANDROIDNDK: /home/runner/.buildozer/android/platform/android-ndk-r25b
+2026-04-27T19:18:09.6100155Z [1m[INFO][0m:    Found NDK version 25b
+2026-04-27T19:18:09.6100791Z [1m[INFO][0m:    Getting NDK API version (i.e. minimum supported API) from user argument
+2026-04-27T19:18:09.6102962Z [1m[INFO][0m:    ccache is missing, the build will not be optimized in the future.
+2026-04-27T19:18:09.6493142Z [1m[90m[DEBUG][39m[0m:   All possible dists: [<Distribution: name financialcalc with recipes (freetype, hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, setuptools, pillow, six, pyjnius, android, kivy, certifi, https://github.com/kivymd/kivymd/archive/master.zip, idna, urllib3, requests, plyer, chardet)>]
+2026-04-27T19:18:09.6496999Z [1m[90m[DEBUG][39m[0m:   Dist matching name and arch: [<Distribution: name financialcalc with recipes (freetype, hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, setuptools, pillow, six, pyjnius, android, kivy, certifi, https://github.com/kivymd/kivymd/archive/master.zip, idna, urllib3, requests, plyer, chardet)>]
+2026-04-27T19:18:09.6500196Z [1m[90m[DEBUG][39m[0m:   Dist matching ndk_api and recipe: [<Distribution: name financialcalc with recipes (freetype, hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, setuptools, pillow, six, pyjnius, android, kivy, certifi, https://github.com/kivymd/kivymd/archive/master.zip, idna, urllib3, requests, plyer, chardet)>]
+2026-04-27T19:18:09.6502102Z [1m[INFO][0m:    Of the existing distributions, the following meet the given requirements:
+2026-04-27T19:18:09.6504288Z [1m[INFO][0m:    	[32m[1mfinancialcalc[0m: min API 21, includes recipes ([32mfreetype, hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, setuptools, pillow, six, pyjnius, android, kivy, certifi, https://github.com/kivymd/kivymd/archive/master.zip, idna, urllib3, requests, plyer, chardet[0m), built for archs ([34marmeabi-v7a, arm64-v8a[0m)
+2026-04-27T19:18:09.6506188Z [1m[INFO][0m:    [1m[94mfinancialcalc has compatible recipes, using this one[0m
+2026-04-27T19:18:09.8760627Z [WARNING]: prerequisites.py is experimental and does not support all prerequisites yet.
+2026-04-27T19:18:09.8761244Z [WARNING]: Please report any issues to the python-for-android issue tracker.
+2026-04-27T19:18:09.8762091Z [0m[1;34m# Build the application #8[0m
+2026-04-27T19:18:09.8762441Z [0m[1;30m# Copy application source from /home/runner/work/Calc/Calc[0m
+2026-04-27T19:18:09.8762889Z [0m[1;30m# Create directory /home/runner/work/Calc/Calc/.buildozer/android/app[0m
+2026-04-27T19:18:09.8763269Z [0m[1;30m# Copy /home/runner/work/Calc/Calc/main.py[0m
+2026-04-27T19:18:09.8763683Z [0m[1;30m# Create directory /home/runner/work/Calc/Calc/.buildozer/android/app/assets/tvm[0m
+2026-04-27T19:18:09.8764124Z [0m[1;30m# Copy /home/runner/work/Calc/Calc/assets/tvm/tvm.py[0m
+2026-04-27T19:18:09.8764575Z [0m[1;30m# Create directory /home/runner/work/Calc/Calc/.buildozer/android/app/assets/calculator[0m
+2026-04-27T19:18:09.8765058Z [0m[1;30m# Copy /home/runner/work/Calc/Calc/assets/calculator/calculator.py[0m
+2026-04-27T19:18:09.8765535Z [0m[1;30m# Create directory /home/runner/work/Calc/Calc/.buildozer/android/app/assets/assets_val[0m
+2026-04-27T19:18:09.8765994Z [0m[1;30m# Copy /home/runner/work/Calc/Calc/assets/assets_val/assets_val.py[0m
+2026-04-27T19:18:09.8766454Z [0m[1;30m# Create directory /home/runner/work/Calc/Calc/.buildozer/android/app/assets/images[0m
+2026-04-27T19:18:09.8767159Z [0m[1;30m# Copy /home/runner/work/Calc/Calc/assets/images/presplash.png[0m
+2026-04-27T19:18:09.8767553Z [0m[1;30m# Copy /home/runner/work/Calc/Calc/assets/images/icon.png[0m
+2026-04-27T19:18:09.8767861Z [0m[1;34m# Package the application[0m
+2026-04-27T19:18:09.8768118Z [0m[1;30m# project.properties updated[0m
+2026-04-27T19:18:09.8771376Z [0m[1;30m# Run ['/opt/hostedtoolcache/Python/3.11.15/x64/bin/python', '-m', 'pythonforandroid.toolchain', 'apk', '--bootstrap', 'sdl2', '--dist_name', 'financialcalc', '--name', 'Financial Calculator', '--version', '0.1', '--package', 'org.rightfix.financialcalc', '--minsdk', '21', '--ndk-api', '21', '--private', '/home/runner/work/Calc/Calc/.buildozer/android/app', '--permission', 'android.permission.INTERNET', '--permission', '(name=android.permission.WRITE_EXTERNAL_STORAGE;maxSdkVersion=18)', '--android-entrypoint', 'org.kivy.android.PythonActivity', '--android-apptheme', '@android:style/Theme.NoTitleBar', '--presplash', '/home/runner/work/Calc/Calc/./assets/images/presplash.png', '--icon', '/home/runner/work/Calc/Calc/./assets/images/icon.png', '--orientation', 'portrait', '--window', '--enable-androidx', '--presplash-color', 'black', '--copy-libs', '--arch', 'arm64-v8a', '--arch', 'armeabi-v7a', '--color=always', '--storage-dir=/home/runner/work/Calc/Calc/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a', '--ndk-api=21', '--ignore-setup-py', '--debug'][0m
+2026-04-27T19:18:09.8774589Z [0m[1;30m# Cwd /home/runner/work/Calc/Calc/.buildozer/android/platform/python-for-android[0m
+2026-04-27T19:18:09.9195687Z [WARNING]: prerequisites.py is experimental and does not support all prerequisites yet.
+2026-04-27T19:18:09.9196209Z [WARNING]: Please report any issues to the python-for-android issue tracker.
+2026-04-27T19:18:09.9244037Z [1m[INFO][0m:    Will compile for the following archs: arm64-v8a, armeabi-v7a
+2026-04-27T19:18:09.9244721Z [1m[INFO][0m:    Found Android API target in $ANDROIDAPI: 34
+2026-04-27T19:18:10.3837242Z [1m[INFO][0m:    Available Android APIs are (34, 36)
+2026-04-27T19:18:10.3837935Z [1m[INFO][0m:    Requested API target 34 is available, continuing.
+2026-04-27T19:18:10.3838717Z [1m[INFO][0m:    Found NDK dir in $ANDROIDNDK: /home/runner/.buildozer/android/platform/android-ndk-r25b
+2026-04-27T19:18:10.3839355Z [1m[INFO][0m:    Found NDK version 25b
+2026-04-27T19:18:10.3840507Z [1m[INFO][0m:    Getting NDK API version (i.e. minimum supported API) from user argument
+2026-04-27T19:18:10.3841565Z [1m[INFO][0m:    ccache is missing, the build will not be optimized in the future.
+2026-04-27T19:18:10.4226985Z [1m[90m[DEBUG][39m[0m:   All possible dists: [<Distribution: name financialcalc with recipes (freetype, hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, setuptools, pillow, six, pyjnius, android, kivy, certifi, https://github.com/kivymd/kivymd/archive/master.zip, idna, urllib3, requests, plyer, chardet)>]
+2026-04-27T19:18:10.4230662Z [1m[90m[DEBUG][39m[0m:   Dist matching name and arch: [<Distribution: name financialcalc with recipes (freetype, hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, setuptools, pillow, six, pyjnius, android, kivy, certifi, https://github.com/kivymd/kivymd/archive/master.zip, idna, urllib3, requests, plyer, chardet)>]
+2026-04-27T19:18:10.4233926Z [1m[90m[DEBUG][39m[0m:   Dist matching ndk_api and recipe: [<Distribution: name financialcalc with recipes (freetype, hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, setuptools, pillow, six, pyjnius, android, kivy, certifi, https://github.com/kivymd/kivymd/archive/master.zip, idna, urllib3, requests, plyer, chardet)>]
+2026-04-27T19:18:10.4235854Z [1m[INFO][0m:    Of the existing distributions, the following meet the given requirements:
+2026-04-27T19:18:10.4238302Z [1m[INFO][0m:    	[32m[1mfinancialcalc[0m: min API 21, includes recipes ([32mfreetype, hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, setuptools, pillow, six, pyjnius, android, kivy, certifi, https://github.com/kivymd/kivymd/archive/master.zip, idna, urllib3, requests, plyer, chardet[0m), built for archs ([34marmeabi-v7a, arm64-v8a[0m)
+2026-04-27T19:18:10.4240332Z [1m[INFO][0m:    [1m[94mfinancialcalc has compatible recipes, using this one[0m
+2026-04-27T19:18:10.4242426Z [1m[90m[DEBUG][39m[0m:   All possible dists: [<Distribution: name financialcalc with recipes (freetype, hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, setuptools, pillow, six, pyjnius, android, kivy, certifi, https://github.com/kivymd/kivymd/archive/master.zip, idna, urllib3, requests, plyer, chardet)>]
+2026-04-27T19:18:10.4245717Z [1m[90m[DEBUG][39m[0m:   Dist matching name and arch: [<Distribution: name financialcalc with recipes (freetype, hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, setuptools, pillow, six, pyjnius, android, kivy, certifi, https://github.com/kivymd/kivymd/archive/master.zip, idna, urllib3, requests, plyer, chardet)>]
+2026-04-27T19:18:10.4249418Z [1m[90m[DEBUG][39m[0m:   Dist matching ndk_api and recipe: [<Distribution: name financialcalc with recipes (freetype, hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, setuptools, pillow, six, pyjnius, android, kivy, certifi, https://github.com/kivymd/kivymd/archive/master.zip, idna, urllib3, requests, plyer, chardet)>]
+2026-04-27T19:18:10.4251427Z [1m[INFO][0m:    Of the existing distributions, the following meet the given requirements:
+2026-04-27T19:18:10.4253699Z [1m[INFO][0m:    	[32m[1mfinancialcalc[0m: min API 21, includes recipes ([32mfreetype, hostpython3, jpeg, libffi, openssl, png, sdl2_image, sdl2_mixer, sdl2_ttf, sqlite3, python3, sdl2, setuptools, pillow, six, pyjnius, android, kivy, certifi, https://github.com/kivymd/kivymd/archive/master.zip, idna, urllib3, requests, plyer, chardet[0m), built for archs ([34marmeabi-v7a, arm64-v8a[0m)
+2026-04-27T19:18:10.4255705Z [1m[INFO][0m:    [1m[94mfinancialcalc has compatible recipes, using this one[0m
+2026-04-27T19:18:10.4308980Z [1m[INFO][0m:    [36m-> directory context /home/runner/work/Calc/Calc/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/bootstrap_builds/sdl2[39m
+2026-04-27T19:18:10.4310368Z [1m[INFO][0m:    [36m<- directory context /home/runner/work/Calc/Calc/.buildozer/android/platform/python-for-android[39m
+2026-04-27T19:18:10.4313514Z [1m[INFO][0m:    [36m-> directory context /home/runner/work/Calc/Calc/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/dists/financialcalc[39m
+2026-04-27T19:18:10.4340086Z [1m[90m[DEBUG][39m[0m:   Remove directory and subdirectory src/main/assets
+2026-04-27T19:18:10.4341346Z [1m[90m[DEBUG][39m[0m:   Create directory src/main/assets
+2026-04-27T19:18:18.2069318Z Compiling '/home/runner/work/Calc/Calc/.buildozer/android/app/main.py'...
+2026-04-27T19:18:18.2336002Z Compiling '/home/runner/work/Calc/Calc/.buildozer/android/app/sitecustomize.py'...
+2026-04-27T19:18:18.2617258Z Compiling '/home/runner/work/Calc/Calc/.buildozer/android/app/assets/tvm/tvm.py'...
+2026-04-27T19:18:18.2896276Z Compiling '/home/runner/work/Calc/Calc/.buildozer/android/app/assets/calculator/calculator.py'...
+2026-04-27T19:18:18.2897176Z ***   File "/home/runner/work/Calc/Calc/.buildozer/android/app/assets/calculator/calculator.py", line 126
+2026-04-27T19:18:18.2897991Z     on_release=lambda btn: setattr(btn, "opacity", 1),
+2026-04-27T19:18:18.2898395Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-04-27T19:18:18.2898791Z SyntaxError: keyword argument repeated: on_release
+2026-04-27T19:18:18.2898977Z 
+2026-04-27T19:18:18.2935225Z No setup.py/pyproject.toml used, copying full private data into .apk.
+2026-04-27T19:18:18.2937172Z Error while running "/home/runner/work/Calc/Calc/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build/python3 -OO -m compileall -b -f /home/runner/work/Calc/Calc/.buildozer/android/app/assets/calculator/calculator.py"
+2026-04-27T19:18:18.2938504Z This probably means one of your Python files has a syntax error, see logs above
+2026-04-27T19:18:18.3155899Z [0m[1;31m# Command failed: ['/opt/hostedtoolcache/Python/3.11.15/x64/bin/python', '-m', 'pythonforandroid.toolchain', 'apk', '--bootstrap', 'sdl2', '--dist_name', 'financialcalc', '--name', 'Financial Calculator', '--version', '0.1', '--package', 'org.rightfix.financialcalc', '--minsdk', '21', '--ndk-api', '21', '--private', '/home/runner/work/Calc/Calc/.buildozer/android/app', '--permission', 'android.permission.INTERNET', '--permission', '(name=android.permission.WRITE_EXTERNAL_STORAGE;maxSdkVersion=18)', '--android-entrypoint', 'org.kivy.android.PythonActivity', '--android-apptheme', '@android:style/Theme.NoTitleBar', '--presplash', '/home/runner/work/Calc/Calc/./assets/images/presplash.png', '--icon', '/home/runner/work/Calc/Calc/./assets/images/icon.png', '--orientation', 'portrait', '--window', '--enable-androidx', '--presplash-color', 'black', '--copy-libs', '--arch', 'arm64-v8a', '--arch', 'armeabi-v7a', '--color=always', '--storage-dir=/home/runner/work/Calc/Calc/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a', '--ndk-api=21', '--ignore-setup-py', '--debug'][0m
+2026-04-27T19:18:18.3161312Z [0m[1;31m# ENVIRONMENT:[0m
+2026-04-27T19:18:18.3161636Z [0m[1;31m#     SHELL = '/bin/bash'[0m
+2026-04-27T19:18:18.3162113Z [0m[1;31m#     SELENIUM_JAR_PATH = '/usr/share/java/selenium-server.jar'[0m
+2026-04-27T19:18:18.3162596Z [0m[1;31m#     CONDA = '/usr/share/miniconda'[0m
+2026-04-27T19:18:18.3163039Z [0m[1;31m#     GITHUB_WORKSPACE = '/home/runner/work/Calc/Calc'[0m
+2026-04-27T19:18:18.3163549Z [0m[1;31m#     JAVA_HOME_11_X64 = '/usr/lib/jvm/temurin-11-jdk-amd64'[0m
+2026-04-27T19:18:18.3164106Z [0m[1;31m#     JAVA_HOME_25_X64 = '/usr/lib/jvm/temurin-25-jdk-amd64'[0m
+2026-04-27T19:18:18.3164735Z [0m[1;31m#     PKG_CONFIG_PATH = '/opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig'[0m
+2026-04-27T19:18:18.3165592Z [0m[1;31m#     GITHUB_PATH = '/home/runner/work/_temp/_runner_file_commands/add_path_57423460-39dd-45ef-8bda-637c61c656b5'[0m
+2026-04-27T19:18:18.3166246Z [0m[1;31m#     GITHUB_ACTION = 'buildozer'[0m
+2026-04-27T19:18:18.3166957Z [0m[1;31m#     JAVA_HOME = '/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64'[0m
+2026-04-27T19:18:18.3167471Z [0m[1;31m#     GITHUB_RUN_NUMBER = '93'[0m
+2026-04-27T19:18:18.3167880Z [0m[1;31m#     RUNNER_NAME = 'GitHub Actions 1000000352'[0m
+2026-04-27T19:18:18.3168362Z [0m[1;31m#     GRADLE_HOME = '/usr/share/gradle-9.4.1'[0m
+2026-04-27T19:18:18.3168797Z [0m[1;31m#     GITHUB_REPOSITORY_OWNER_ID = '119728765'[0m
+2026-04-27T19:18:18.3169534Z [0m[1;31m#     ACTIONS_RUNNER_ACTION_ARCHIVE_CACHE = '/opt/actionarchivecache'[0m
+2026-04-27T19:18:18.3170080Z [0m[1;31m#     XDG_CONFIG_HOME = '/home/runner/.config'[0m
+2026-04-27T19:18:18.3170595Z [0m[1;31m#     Python_ROOT_DIR = '/opt/hostedtoolcache/Python/3.11.15/x64'[0m
+2026-04-27T19:18:18.3171095Z [0m[1;31m#     DOTNET_SKIP_FIRST_TIME_EXPERIENCE = '1'[0m
+2026-04-27T19:18:18.3171484Z [0m[1;31m#     ANT_HOME = '/usr/share/ant'[0m
+2026-04-27T19:18:18.3171923Z [0m[1;31m#     JAVA_HOME_8_X64 = '/usr/lib/jvm/temurin-8-jdk-amd64'[0m
+2026-04-27T19:18:18.3172377Z [0m[1;31m#     GITHUB_TRIGGERING_ACTOR = 'RightFix'[0m
+2026-04-27T19:18:18.3172871Z [0m[1;31m#     pythonLocation = '/opt/hostedtoolcache/Python/3.11.15/x64'[0m
+2026-04-27T19:18:18.3173338Z [0m[1;31m#     GITHUB_REF_TYPE = 'branch'[0m
+2026-04-27T19:18:18.3173752Z [0m[1;31m#     HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS = '3650'[0m
+2026-04-27T19:18:18.3174265Z [0m[1;31m#     ANDROID_NDK = '/usr/local/lib/android/sdk/ndk/27.3.13750724'[0m
+2026-04-27T19:18:18.3174751Z [0m[1;31m#     BOOTSTRAP_HASKELL_NONINTERACTIVE = '1'[0m
+2026-04-27T19:18:18.3175176Z [0m[1;31m#     PWD = '/home/runner/work/Calc/Calc'[0m
+2026-04-27T19:18:18.3175587Z [0m[1;31m#     PIPX_BIN_DIR = '/opt/pipx_bin'[0m
+2026-04-27T19:18:18.3175931Z [0m[1;31m#     LOGNAME = 'runner'[0m
+2026-04-27T19:18:18.3176302Z [0m[1;31m#     GITHUB_REPOSITORY_ID = '948148489'[0m
+2026-04-27T19:18:18.3176797Z [0m[1;31m#     GITHUB_ACTIONS = 'true'[0m
+2026-04-27T19:18:18.3177174Z [0m[1;31m#     USE_BAZEL_FALLBACK_VERSION = 'silent:'[0m
+2026-04-27T19:18:18.3177722Z [0m[1;31m#     ANDROID_NDK_LATEST_HOME = '/usr/local/lib/android/sdk/ndk/29.0.14206865'[0m
+2026-04-27T19:18:18.3178222Z [0m[1;31m#     SYSTEMD_EXEC_PID = '1646'[0m
+2026-04-27T19:18:18.3178659Z [0m[1;31m#     GITHUB_SHA = 'c224df1d56e40e944a843ef11421f5ae3fc726c8'[0m
+2026-04-27T19:18:18.3179307Z [0m[1;31m#     GITHUB_WORKFLOW_REF = 'RightFix/Calc/.github/workflows/build.yml@refs/heads/main'[0m
+2026-04-27T19:18:18.3180019Z [0m[1;31m#     POWERSHELL_DISTRIBUTION_CHANNEL = 'GitHub-Actions-ubuntu22'[0m
+2026-04-27T19:18:18.3180514Z [0m[1;31m#     RUNNER_ENVIRONMENT = 'github-hosted'[0m
+2026-04-27T19:18:18.3181061Z [0m[1;31m#     DOTNET_MULTILEVEL_LOOKUP = '0'[0m
+2026-04-27T19:18:18.3181435Z [0m[1;31m#     GITHUB_REF = 'refs/heads/main'[0m
+2026-04-27T19:18:18.3181777Z [0m[1;31m#     RUNNER_OS = 'Linux'[0m
+2026-04-27T19:18:18.3182114Z [0m[1;31m#     GITHUB_REF_PROTECTED = 'false'[0m
+2026-04-27T19:18:18.3182456Z [0m[1;31m#     HOME = '/home/runner'[0m
+2026-04-27T19:18:18.3182904Z [0m[1;31m#     GITHUB_API_URL = 'https://api.github.com'[0m
+2026-04-27T19:18:18.3183325Z [0m[1;31m#     LANG = 'C.UTF-8'[0m
+2026-04-27T19:18:18.3183747Z [0m[1;31m#     GOROOT_1_25_X64 = '/opt/hostedtoolcache/go/1.25.9/x64'[0m
+2026-04-27T19:18:18.3184300Z [0m[1;31m#     RUNNER_TRACKING_ID = 'github_c793b483-3230-403e-a39a-aa2c37e10074'[0m
+2026-04-27T19:18:18.3184756Z [0m[1;31m#     RUNNER_ARCH = 'X64'[0m
+2026-04-27T19:18:18.3185140Z [0m[1;31m#     RUNNER_TEMP = '/home/runner/work/_temp'[0m
+2026-04-27T19:18:18.3185859Z [0m[1;31m#     GITHUB_STATE = '/home/runner/work/_temp/_runner_file_commands/save_state_57423460-39dd-45ef-8bda-637c61c656b5'[0m
+2026-04-27T19:18:18.3186715Z [0m[1;31m#     EDGEWEBDRIVER = '/usr/local/share/edge_driver'[0m
+2026-04-27T19:18:18.3187217Z [0m[1;31m#     JAVA_HOME_21_X64 = '/usr/lib/jvm/temurin-21-jdk-amd64'[0m
+2026-04-27T19:18:18.3187937Z [0m[1;31m#     GITHUB_ENV = '/home/runner/work/_temp/_runner_file_commands/set_env_57423460-39dd-45ef-8bda-637c61c656b5'[0m
+2026-04-27T19:18:18.3188703Z [0m[1;31m#     GITHUB_EVENT_PATH = '/home/runner/work/_temp/_github_workflow/event.json'[0m
+2026-04-27T19:18:18.3189288Z [0m[1;31m#     INVOCATION_ID = '71a4305677134adeabebaf992b23d1a8'[0m
+2026-04-27T19:18:18.3189713Z [0m[1;31m#     GITHUB_EVENT_NAME = 'push'[0m
+2026-04-27T19:18:18.3190098Z [0m[1;31m#     GITHUB_RUN_ID = '25014543919'[0m
+2026-04-27T19:18:18.3190823Z [0m[1;31m#     JAVA_HOME_17_X64 = '/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64'[0m
+2026-04-27T19:18:18.3191471Z [0m[1;31m#     ANDROID_NDK_HOME = '/usr/local/lib/android/sdk/ndk/27.3.13750724'[0m
+2026-04-27T19:18:18.3192317Z [0m[1;31m#     GITHUB_STEP_SUMMARY = '/home/runner/work/_temp/_runner_file_commands/step_summary_57423460-39dd-45ef-8bda-637c61c656b5'[0m
+2026-04-27T19:18:18.3193048Z [0m[1;31m#     HOMEBREW_NO_AUTO_UPDATE = '1'[0m
+2026-04-27T19:18:18.3193444Z [0m[1;31m#     GITHUB_ACTOR = 'RightFix'[0m
+2026-04-27T19:18:18.3193818Z [0m[1;31m#     NVM_DIR = '/home/runner/.nvm'[0m
+2026-04-27T19:18:18.3194167Z [0m[1;31m#     SGX_AESM_ADDR = '1'[0m
+2026-04-27T19:18:18.3194514Z [0m[1;31m#     GITHUB_RUN_ATTEMPT = '1'[0m
+2026-04-27T19:18:18.3194919Z [0m[1;31m#     ANDROID_HOME = '/usr/local/lib/android/sdk'[0m
+2026-04-27T19:18:18.3195438Z [0m[1;31m#     GITHUB_GRAPHQL_URL = 'https://api.github.com/graphql'[0m
+2026-04-27T19:18:18.3195885Z [0m[1;31m#     ACCEPT_EULA = 'Y'[0m
+2026-04-27T19:18:18.3196217Z [0m[1;31m#     USER = 'runner'[0m
+2026-04-27T19:18:18.3197274Z [0m[1;31m#     PSModulePath = '/root/.local/share/powershell/Modules:/usr/local/share/powershell/Modules:/opt/microsoft/powershell/7/Modules:/usr/share/az_14.6.0'[0m
+2026-04-27T19:18:18.3198165Z [0m[1;31m#     GITHUB_SERVER_URL = 'https://github.com'[0m
+2026-04-27T19:18:18.3198569Z [0m[1;31m#     PIPX_HOME = '/opt/pipx'[0m
+2026-04-27T19:18:18.3199009Z [0m[1;31m#     GECKOWEBDRIVER = '/usr/local/share/gecko_driver'[0m
+2026-04-27T19:18:18.3199543Z [0m[1;31m#     CHROMEWEBDRIVER = '/usr/local/share/chromedriver-linux64'[0m
+2026-04-27T19:18:18.3199991Z [0m[1;31m#     SHLVL = '0'[0m
+2026-04-27T19:18:18.3200376Z [0m[1;31m#     ANDROID_SDK_ROOT = '/usr/local/lib/android/sdk'[0m
+2026-04-27T19:18:18.3200880Z [0m[1;31m#     VCPKG_INSTALLATION_ROOT = '/usr/local/share/vcpkg'[0m
+2026-04-27T19:18:18.3201322Z [0m[1;31m#     GITHUB_ACTOR_ID = '119728765'[0m
+2026-04-27T19:18:18.3201926Z [0m[1;31m#     ACTIONS_ORCHESTRATION_ID = 'd8bd0513-a555-42ab-824c-593c9a1ee9f5.build.__default'[0m
+2026-04-27T19:18:18.3202535Z [0m[1;31m#     RUNNER_TOOL_CACHE = '/opt/hostedtoolcache'[0m
+2026-04-27T19:18:18.3203097Z [0m[1;31m#     ImageVersion = '20260413.88.1'[0m
+2026-04-27T19:18:18.3203602Z [0m[1;31m#     Python3_ROOT_DIR = '/opt/hostedtoolcache/Python/3.11.15/x64'[0m
+2026-04-27T19:18:18.3204066Z [0m[1;31m#     DOTNET_NOLOGO = '1'[0m
+2026-04-27T19:18:18.3204504Z [0m[1;31m#     GOROOT_1_23_X64 = '/opt/hostedtoolcache/go/1.23.12/x64'[0m
+2026-04-27T19:18:18.3205072Z [0m[1;31m#     GITHUB_WORKFLOW_SHA = 'c224df1d56e40e944a843ef11421f5ae3fc726c8'[0m
+2026-04-27T19:18:18.3205632Z [0m[1;31m#     GOROOT_1_24_X64 = '/opt/hostedtoolcache/go/1.24.13/x64'[0m
+2026-04-27T19:18:18.3206053Z [0m[1;31m#     GITHUB_REF_NAME = 'main'[0m
+2026-04-27T19:18:18.3206396Z [0m[1;31m#     GITHUB_JOB = 'build'[0m
+2026-04-27T19:18:18.3207015Z [0m[1;31m#     LD_LIBRARY_PATH = '/opt/hostedtoolcache/Python/3.11.15/x64/lib'[0m
+2026-04-27T19:18:18.3207525Z [0m[1;31m#     XDG_RUNTIME_DIR = '/run/user/1001'[0m
+2026-04-27T19:18:18.3207968Z [0m[1;31m#     AZURE_EXTENSION_DIR = '/opt/az/azcliextensions'[0m
+2026-04-27T19:18:18.3208419Z [0m[1;31m#     GITHUB_REPOSITORY = 'RightFix/Calc'[0m
+2026-04-27T19:18:18.3208918Z [0m[1;31m#     Python2_ROOT_DIR = '/opt/hostedtoolcache/Python/3.11.15/x64'[0m
+2026-04-27T19:18:18.3209411Z [0m[1;31m#     CHROME_BIN = '/usr/bin/google-chrome'[0m
+2026-04-27T19:18:18.3209924Z [0m[1;31m#     ANDROID_NDK_ROOT = '/usr/local/lib/android/sdk/ndk/27.3.13750724'[0m
+2026-04-27T19:18:18.3210479Z [0m[1;31m#     GOROOT_1_22_X64 = '/opt/hostedtoolcache/go/1.22.12/x64'[0m
+2026-04-27T19:18:18.3210918Z [0m[1;31m#     GITHUB_RETENTION_DAYS = '90'[0m
+2026-04-27T19:18:18.3211286Z [0m[1;31m#     JOURNAL_STREAM = '8:12534'[0m
+2026-04-27T19:18:18.3211698Z [0m[1;31m#     RUNNER_WORKSPACE = '/home/runner/work/Calc'[0m
+2026-04-27T19:18:18.3212122Z [0m[1;31m#     LEIN_HOME = '/usr/local/lib/lein'[0m
+2026-04-27T19:18:18.3212872Z [0m[1;31m#     LEIN_JAR = '/usr/local/lib/lein/self-installs/leiningen-2.12.0-standalone.jar'[0m
+2026-04-27T19:18:18.3213427Z [0m[1;31m#     GITHUB_ACTION_REPOSITORY = ''[0m
+2026-04-27T19:18:18.3215806Z [0m[1;31m#     PATH = '/home/runner/.buildozer/android/platform/apache-ant-1.9.4/bin:/opt/hostedtoolcache/Python/3.11.15/x64/bin:/opt/hostedtoolcache/Python/3.11.15/x64:/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64/bin:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'[0m
+2026-04-27T19:18:18.3218112Z [0m[1;31m#     GITHUB_BASE_REF = ''[0m
+2026-04-27T19:18:18.3218556Z [0m[1;31m#     GHCUP_INSTALL_BASE_PREFIX = '/usr/local'[0m
+2026-04-27T19:18:18.3218964Z [0m[1;31m#     CI = 'true'[0m
+2026-04-27T19:18:18.3219334Z [0m[1;31m#     SWIFT_PATH = '/usr/share/swift/usr/bin'[0m
+2026-04-27T19:18:18.3219732Z [0m[1;31m#     ImageOS = 'ubuntu22'[0m
+2026-04-27T19:18:18.3220131Z [0m[1;31m#     GITHUB_REPOSITORY_OWNER = 'RightFix'[0m
+2026-04-27T19:18:18.3220537Z [0m[1;31m#     GITHUB_HEAD_REF = ''[0m
+2026-04-27T19:18:18.3220902Z [0m[1;31m#     date = '20260427'[0m
+2026-04-27T19:18:18.3221249Z [0m[1;31m#     GITHUB_ACTION_REF = ''[0m
+2026-04-27T19:18:18.3221637Z [0m[1;31m#     ENABLE_RUNNER_TRACING = 'true'[0m
+2026-04-27T19:18:18.3222064Z [0m[1;31m#     GITHUB_WORKFLOW = 'Android Build'[0m
+2026-04-27T19:18:18.3222493Z [0m[1;31m#     DEBIAN_FRONTEND = 'noninteractive'[0m
+2026-04-27T19:18:18.3223188Z [0m[1;31m#     GITHUB_OUTPUT = '/home/runner/work/_temp/_runner_file_commands/set_output_57423460-39dd-45ef-8bda-637c61c656b5'[0m
+2026-04-27T19:18:18.3223868Z [0m[1;31m#     AGENT_TOOLSDIRECTORY = '/opt/hostedtoolcache'[0m
+2026-04-27T19:18:18.3224354Z [0m[1;31m#     _ = '/opt/hostedtoolcache/Python/3.11.15/x64/bin/buildozer'[0m
+2026-04-27T19:18:18.3224930Z [0m[1;31m#     PACKAGES_PATH = '/home/runner/.buildozer/android/packages'[0m
+2026-04-27T19:18:18.3225585Z [0m[1;31m#     ANDROIDSDK = '/home/runner/.buildozer/android/platform/android-sdk'[0m
+2026-04-27T19:18:18.3226628Z [0m[1;31m#     ANDROIDNDK = '/home/runner/.buildozer/android/platform/android-ndk-r25b'[0m
+2026-04-27T19:18:18.3227191Z [0m[1;31m#     ANDROIDAPI = '34'[0m
+2026-04-27T19:18:18.3227541Z [0m[1;31m#     ANDROIDMINAPI = '21'[0m
+2026-04-27T19:18:18.3227867Z [0m[1;31m# [0m
+2026-04-27T19:18:18.3228213Z [0m[1;31m# Buildozer failed to execute the last command[0m
+2026-04-27T19:18:18.3228900Z [0m[1;31m# The error might be hidden in the log above this error[0m
+2026-04-27T19:18:18.3229439Z [0m[1;31m# Please read the full log, and search for it before[0m
+2026-04-27T19:18:18.3229921Z [0m[1;31m# raising an issue with buildozer itself.[0m
+2026-04-27T19:18:18.3230442Z [0m[1;31m# In case of a bug report, please add a full log with log_level = 2[0m
+2026-04-27T19:18:18.3352034Z yes: standard output: Broken pipe
+2026-04-27T19:18:18.3366217Z ##[error]Process completed with exit code 1.

@@ -1,0 +1,16 @@
+﻿2026-04-27T19:17:54.3014226Z ##[group]Run actions/setup-python@v5
+2026-04-27T19:17:54.3014453Z with:
+2026-04-27T19:17:54.3014613Z   python-version: 3.11
+2026-04-27T19:17:54.3014792Z   check-latest: false
+2026-04-27T19:17:54.3015050Z   token: ***
+2026-04-27T19:17:54.3015213Z   update-environment: true
+2026-04-27T19:17:54.3015406Z   allow-prereleases: false
+2026-04-27T19:17:54.3015584Z   freethreaded: false
+2026-04-27T19:17:54.3015747Z env:
+2026-04-27T19:17:54.3015890Z   date: 20260427
+2026-04-27T19:17:54.3016154Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+2026-04-27T19:17:54.3016708Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+2026-04-27T19:17:54.3017005Z ##[endgroup]
+2026-04-27T19:17:54.4341252Z ##[group]Installed versions
+2026-04-27T19:17:54.4424077Z Successfully set up CPython (3.11.15)
+2026-04-27T19:17:54.4424691Z ##[endgroup]

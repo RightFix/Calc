@@ -54,7 +54,7 @@ class CalculatorScreen(Screen):
             text="",
             font_size=18,
             halign="right",
-            valign="bottom",
+            # valign="bottom",
             readonly=True,
             background_color=(0.12, 0.12, 0.12, 1),
             foreground_color=(0.7, 0.7, 0.7, 1),
@@ -67,7 +67,7 @@ class CalculatorScreen(Screen):
             text="",
             font_size=48,
             halign="right",
-            valign="bottom",
+            # valign="bottom",
             readonly=True,
             background_color=(0.12, 0.12, 0.12, 1),
             foreground_color=(1, 1, 1, 1),
@@ -120,10 +120,12 @@ class CalculatorScreen(Screen):
                     pos=btn.pos,
                     radius=[15, 15, 15, 15],
                 )
+            action_capture = action
             btn.bind(
-                on_release=lambda btn, a=action: self.on_button_press(a),
                 on_press=lambda btn: setattr(btn, "opacity", 0.7),
-                on_release=lambda btn: setattr(btn, "opacity", 1),
+            )
+            btn.bind(
+                on_release=lambda btn, a=action_capture: self.on_button_press(a),
             )
             buttons_grid.add_widget(btn)
 
