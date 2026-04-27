@@ -99,5 +99,5 @@ class AssetsVal(MDScreen):
         self.ids.result.text = ""
 
     def navigate_to(self, screen_name):
-        self.manager.app.screen_history.append(screen_name)
+        # self.manager.app.screen_history.append(screen_name)
         self.manager.current = screen_name
