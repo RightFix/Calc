@@ -1,187 +1,131 @@
-from kivymd.uix.screen import MDScreen
-from kivy.lang import Builder
-from kivymd.uix.textfield import MDTextField
-from kivymd.uix.button import MDButton, MDButtonText
-from kivymd.uix.label import MDLabel
+from kivy.uix.screenmanager import Screen
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.label import Label
+from kivy.uix.button import Button
+from kivy.uix.textinput import TextInput
 import math
 
-Builder.load_file("assets/tvm/tvm.kv")
 
+class TVMScreen(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.build_ui()
 
-class TVM(MDScreen):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def build_ui(self):
+        main_layout = BoxLayout(orientation="vertical", spacing=5, padding=5)
 
-    def calculate_future_value(self):
+        app_bar = BoxLayout(size_hint_y=None, height=50, padding=10)
+        app_bar.add_widget(Label(text="TVM Calculator", font_size=20, halign="left"))
+        main_layout.add_widget(app_bar)
+
+        inputs_layout = GridLayout(cols=2, size_hint_y=0.5, padding=10, spacing=10)
+        inputs_layout.add_widget(Label(text="Present Value (PV):", halign="right"))
+        self.pv_input = TextInput(hint_text="0", multiline=False, input_filter="float")
+        inputs_layout.add_widget(self.pv_input)
+
+        inputs_layout.add_widget(Label(text="Future Value (FV):", halign="right"))
+        self.fv_input = TextInput(hint_text="0", multiline=False, input_filter="float")
+        inputs_layout.add_widget(self.fv_input)
+
+        inputs_layout.add_widget(Label(text="Rate (%):", halign="right"))
+        self.rate_input = TextInput(
+            hint_text="0", multiline=False, input_filter="float"
+        )
+        inputs_layout.add_widget(self.rate_input)
+
+        inputs_layout.add_widget(Label(text="Periods:", halign="right"))
+        self.periods_input = TextInput(
+            hint_text="0", multiline=False, input_filter="float"
+        )
+        inputs_layout.add_widget(self.periods_input)
+
+        main_layout.add_widget(inputs_layout)
+
+        buttons_layout = GridLayout(
+            cols=2, rows=3, size_hint_y=0.3, padding=5, spacing=10
+        )
+        buttons_layout.add_widget(
+            Button(text="Future Value", on_press=self.calculate_future_value)
+        )
+        buttons_layout.add_widget(
+            Button(text="Present Value", on_press=self.calculate_present_value)
+        )
+        buttons_layout.add_widget(
+            Button(text="Payment (PMT)", on_press=self.calculate_pmt)
+        )
+        buttons_layout.add_widget(
+            Button(text="Periods (NPER)", on_press=self.calculate_nper)
+        )
+        buttons_layout.add_widget(Button(text="Clear", on_press=self.clear_inputs))
+        buttons_layout.add_widget(
+            Button(text="Exit", on_press=lambda x: self.go_to("calculator_screen"))
+        )
+        main_layout.add_widget(buttons_layout)
+
+        self.result_label = Label(text="Result: ", font_size=18, size_hint_y=0.2)
+        main_layout.add_widget(self.result_label)
+
+        self.add_widget(main_layout)
+
+    def calculate_future_value(self, *args):
         try:
-            p = float(self.ids.pv.text or 0)
-            r = float(self.ids.rate.text or 0) / 100
-            n = float(self.ids.periods.text or 0)
+            p = float(self.pv_input.text or 0)
+            r = float(self.rate_input.text or 0) / 100
+            n = float(self.periods_input.text or 0)
             if r == 0:
                 fv = p
             else:
                 fv = p * ((1 + r) ** n)
-            self.ids.result.text = f"Future Value: {fv:,.2f}"
+            self.result_label.text = f"Future Value: {fv:,.2f}"
         except (ValueError, ZeroDivisionError):
-            self.ids.result.text = "Error: Enter valid numbers"
+            self.result_label.text = "Error: Enter valid numbers"
 
-    def calculate_present_value(self):
+    def calculate_present_value(self, *args):
         try:
-            fv = float(self.ids.fv.text or 0)
-            r = float(self.ids.rate.text or 0) / 100
-            n = float(self.ids.periods.text or 0)
+            fv = float(self.fv_input.text or 0)
+            r = float(self.rate_input.text or 0) / 100
+            n = float(self.periods_input.text or 0)
             if r == 0:
                 pv = fv
             else:
                 pv = fv / ((1 + r) ** n)
-            self.ids.result.text = f"Present Value: {pv:,.2f}"
+            self.result_label.text = f"Present Value: {pv:,.2f}"
         except (ValueError, ZeroDivisionError):
-            self.ids.result.text = "Error: Enter valid numbers"
+            self.result_label.text = "Error: Enter valid numbers"
 
-    def calculate_pmt(self):
+    def calculate_pmt(self, *args):
         try:
-            pv = float(self.ids.pv.text or 0)
-            r = float(self.ids.rate.text or 0) / 100
-            n = float(self.ids.periods.text or 0)
+            pv = float(self.pv_input.text or 0)
+            r = float(self.rate_input.text or 0) / 100
+            n = float(self.periods_input.text or 0)
             if r == 0:
                 pmt = pv / n if n > 0 else 0
             else:
                 pmt = (pv * r * (1 + r) ** n) / ((1 + r) ** n - 1)
-            self.ids.result.text = f"Payment: {pmt:,.2f} per period"
+            self.result_label.text = f"Payment: {pmt:,.2f} per period"
         except (ValueError, ZeroDivisionError):
-            self.ids.result.text = "Error: Enter valid numbers"
+            self.result_label.text = "Error: Enter valid numbers"
 
-    def calculate_nper(self):
+    def calculate_nper(self, *args):
         try:
-            pv = float(self.ids.pv.text or 0)
-            fv = float(self.ids.fv.text or 0)
-            r = float(self.ids.rate.text or 0) / 100
+            pv = float(self.pv_input.text or 0)
+            fv = float(self.fv_input.text or 0)
+            r = float(self.rate_input.text or 0) / 100
             if r == 0:
                 n = -fv / pv if pv != 0 else 0
             else:
                 n = math.log(fv / pv) / math.log(1 + r) if pv > 0 and fv > 0 else 0
-            self.ids.result.text = f"Periods: {n:,.2f}"
+            self.result_label.text = f"Periods: {n:,.2f}"
         except (ValueError, ZeroDivisionError):
-            self.ids.result.text = "Error: Enter valid numbers"
+            self.result_label.text = "Error: Enter valid numbers"
 
-    def calculate_rate(self):
-        try:
-            pv = float(self.ids.pv.text or 0)
-            fv = float(self.ids.fv.text or 0)
-            n = float(self.ids.periods.text or 0)
-            if n == 0 or pv == 0 or fv == 0:
-                self.ids.result.text = "Error: Invalid values"
-                return
-            r = (fv / pv) ** (1 / n) - 1
-            self.ids.result.text = f"Rate: {r * 100:,.2f}% per period"
-        except (ValueError, ZeroDivisionError):
-            self.ids.result.text = "Error: Enter valid numbers"
+    def clear_inputs(self, *args):
+        self.pv_input.text = ""
+        self.fv_input.text = ""
+        self.rate_input.text = ""
+        self.periods_input.text = ""
+        self.result_label.text = "Result: "
 
-    def calculate_npv(self):
-        try:
-            rate = float(self.ids.rate.text or 0) / 100
-            flows = self.ids.cashflows.text
-            if not flows.strip():
-                self.ids.result.text = "Error: Enter cash flows"
-                return
-            cashflow_list = [float(x.strip()) for x in flows.split(",")]
-            npv = cashflow_list[0] if cashflow_list else 0
-            for i, cf in enumerate(cashflow_list[1:], 1):
-                npv += cf / ((1 + rate) ** i)
-            self.ids.result.text = f"NPV: {npv:,.2f}"
-        except ValueError:
-            self.ids.result.text = "Error: Enter valid cash flows"
-
-    def calculate_irr(self):
-        try:
-            flows = self.ids.cashflows.text
-            if not flows.strip():
-                self.ids.result.text = "Error: Enter cash flows"
-                return
-            cashflow_list = [float(x.strip()) for x in flows.split(",")]
-            rate = 0.1
-            for _ in range(100):
-                npv = sum(cf / ((1 + rate) ** i) for i, cf in enumerate(cashflow_list))
-                derivative = sum(
-                    -i * cf / ((1 + rate) ** (i + 1))
-                    for i, cf in enumerate(cashflow_list)
-                    if i > 0
-                )
-                if abs(npv) < 0.01 or derivative == 0:
-                    break
-                rate = rate - npv / derivative
-            self.ids.result.text = f"IRR: {rate * 100:,.2f}%"
-        except (ValueError, ZeroDivisionError):
-            self.ids.result.text = "Error: Cannot calculate IRR"
-
-    def calculate_loan_payment(self):
-        try:
-            principal = float(self.ids.pv.text or 0)
-            annual_rate = float(self.ids.rate.text or 0) / 100
-            years = float(self.ids.periods.text or 0)
-            if years == 0 or principal == 0:
-                self.ids.result.text = "Error: Enter valid loan details"
-                return
-            months = years * 12
-            if annual_rate == 0:
-                monthly_pmt = principal / months
-            else:
-                monthly_rate = annual_rate / 12
-                monthly_pmt = (
-                    principal * monthly_rate * (1 + monthly_rate) ** months
-                ) / ((1 + monthly_rate) ** months - 1)
-            total_interest = (monthly_pmt * months) - principal
-            self.ids.result.text = (
-                f"Monthly: {monthly_pmt:,.2f}\nTotal Interest: {total_interest:,.2f}"
-            )
-        except (ValueError, ZeroDivisionError):
-            self.ids.result.text = "Error: Enter valid numbers"
-
-    def calculate_bond_price(self):
-        try:
-            face_value = float(self.ids.pv.text or 0)
-            coupon_rate = float(self.ids.rate.text or 0) / 100
-            years = float(self.ids.periods.text or 0)
-            market_rate = float(self.ids.fv.text or 0) / 100
-            if years == 0 or face_value == 0:
-                self.ids.result.text = "Error: Enter valid bond details"
-                return
-            coupon_payment = face_value * coupon_rate
-            if market_rate == 0:
-                price = face_value + (coupon_payment * years)
-            else:
-                pv_coupons = (
-                    coupon_payment * (1 - (1 + market_rate) ** -years) / market_rate
-                )
-                pv_face = face_value / ((1 + market_rate) ** years)
-                price = pv_coupons + pv_face
-            self.ids.result.text = f"Bond Price: {price:,.2f}"
-        except (ValueError, ZeroDivisionError):
-            self.ids.result.text = "Error: Enter valid numbers"
-
-    def calculate_savings(self):
-        try:
-            monthly_deposit = float(self.ids.pv.text or 0)
-            rate = float(self.ids.rate.text or 0) / 100 / 12
-            months = float(self.ids.periods.text or 0)
-            if months == 0:
-                self.ids.result.text = "Error: Enter valid period"
-                return
-            if rate == 0:
-                fv = monthly_deposit * months
-            else:
-                fv = monthly_deposit * (((1 + rate) ** months - 1) / rate)
-            self.ids.result.text = f"Future Value: {fv:,.2f}"
-        except (ValueError, ZeroDivisionError):
-            self.ids.result.text = "Error: Enter valid numbers"
-
-    def clear_inputs(self):
-        self.ids.pv.text = ""
-        self.ids.fv.text = ""
-        self.ids.rate.text = ""
-        self.ids.periods.text = ""
-        self.ids.cashflows.text = ""
-        self.ids.result.text = ""
-
-    def navigate_to(self, screen_name):
+    def go_to(self, screen_name):
         self.manager.current = screen_name
