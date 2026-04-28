@@ -23,7 +23,7 @@ class TVMScreen(Screen):
             orientation="vertical", spacing=10, padding=[15, 10, 15, 10]
         )
 
-        app_bar = BoxLayout(size_hint_y=None, height=65, padding=15)
+        app_bar = BoxLayout(size_hint_y=None, height=50, padding=15)
         header = Label(
             text="[b]TVM Calculator[/b]",
             markup=True,
@@ -31,10 +31,46 @@ class TVMScreen(Screen):
             halign="left",
             valign="center",
             color=(1, 1, 1, 1),
+            size_hint_x=0.4,
         )
         app_bar.add_widget(header)
 
+        top_nav = BoxLayout(
+            size_hint_y=None, height=50, spacing=8, padding=[5, 5, 5, 5]
+        )
+        calc_btn = Button(
+            text="Calc",
+            font_size=16,
+            background_color=(0.0, 0.5, 0.8, 1),
+            color=(1, 1, 1, 1),
+            bold=True,
+        )
+        calc_btn.bind(on_release=lambda x: self.go_to("calculator_screen"))
+
+        assets_btn = Button(
+            text="Assets",
+            font_size=16,
+            background_color=(0.3, 0.6, 0.3, 1),
+            color=(1, 1, 1, 1),
+            bold=True,
+        )
+        assets_btn.bind(on_release=lambda x: self.go_to("assets_val_screen"))
+
+        tvm_btn = Button(
+            text="TVM",
+            font_size=16,
+            background_color=self.BTN_COLOR,
+            color=(1, 1, 1, 1),
+            bold=True,
+        )
+        tvm_btn.bind(on_release=lambda x: self.go_to("tvm_screen"))
+
+        top_nav.add_widget(calc_btn)
+        top_nav.add_widget(assets_btn)
+        top_nav.add_widget(tvm_btn)
+
         main_layout.add_widget(app_bar)
+        main_layout.add_widget(top_nav)
 
         inputs_layout = BoxLayout(
             orientation="vertical", size_hint_y=0.40, spacing=15, padding=10
@@ -92,7 +128,6 @@ class TVMScreen(Screen):
             ("Payment (PMT)", self.calculate_pmt),
             ("Periods (NPER)", self.calculate_nper),
             ("Clear", self.clear_inputs),
-            ("Back", lambda x: self.go_to("calculator_screen")),
         ]
 
         for text, callback in buttons_config:
