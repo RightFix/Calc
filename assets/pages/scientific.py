@@ -2,10 +2,13 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
+
 # from kivy.uix.button import Button
 from ..ui_custom import CustomBoxLayout, RoundedButton
 import math
+
 Button = RoundedButton
+
 
 class SciScreen(Screen):
     HEADER_COLOR = (0.3, 0.3, 0.5, 1)
@@ -23,7 +26,9 @@ class SciScreen(Screen):
 
     def build_ui(self):
         main_layout = CustomBoxLayout(
-            orientation="vertical", spacing=10, padding=[15, 10, 15, 10],
+            orientation="vertical",
+            spacing=10,
+            padding=[15, 10, 15, 10],
         )
 
         app_bar = BoxLayout(size_hint_y=None, height=50, padding=15)
@@ -96,7 +101,7 @@ class SciScreen(Screen):
             size_hint_x=1,
             size_hint_y=0.35,
             text_size=(None, None),
-            color=(0.3,.3,.3,1),
+            color=(0.3, 0.3, 0.3, 1),
             padding=[10, 0],
         )
         self.display_label = Label(
@@ -106,7 +111,7 @@ class SciScreen(Screen):
             size_hint_x=1,
             size_hint_y=0.65,
             text_size=(None, None),
-            color=(0.3,0.3,0.3,1),
+            color=(0.3, 0.3, 0.3, 1),
             padding=[10, 0],
         )
         self.display_label.bind(
@@ -193,14 +198,14 @@ class SciScreen(Screen):
                 if self.display_label.text[-5:] == "sqrt(":
                     self.display_label.text = self.display_label.text[:-5]
                 elif self.display_label.text[-4:] == "tan(":
-                    self.display_label.text = self.display_label.text[:-4]  
+                    self.display_label.text = self.display_label.text[:-4]
                 elif self.display_label.text[-4:] == "sin(":
-                    self.display_label.text = self.display_label.text[:-4]  
+                    self.display_label.text = self.display_label.text[:-4]
                 elif self.display_label.text[-4:] == "cos(":
-                    self.display_label.text = self.display_label.text[:-4]  
+                    self.display_label.text = self.display_label.text[:-4]
                 elif self.display_label.text[-4:] == "log(":
-                    self.display_label.text = self.display_label.text[:-4]  
-                else:    
+                    self.display_label.text = self.display_label.text[:-4]
+                else:
                     self.display_label.text = self.display_label.text[:-1]
             if not self.display_label.text:
                 self.display_label.text = "0"
@@ -254,12 +259,14 @@ class SciScreen(Screen):
 
     def calculate(self, *args):
         try:
+            expr = self.display_label.text
             expr = (
-                self.display_label.text.replace("×", "*")
+                expr.replace("×", "*")
                 .replace("÷", "/")
                 .replace("^", "**")
-                .replace("π",str(math.pi))
+                .replace("π", str(math.pi))
             )
+
             if self.current_angle_mode == "deg":
                 expr = (
                     expr.replace("sin(", "math.sin(math.radians(")
@@ -277,6 +284,9 @@ class SciScreen(Screen):
                 .replace("ln(", "math.log(")
                 .replace("√", "math.sqrt(")
             )
+            open_count = expr.count("(")
+            close_count = expr.count(")")
+            expr = expr + ")" * (open_count - close_count)
             result = eval(expr)
             result = round(result, 10)
             self.last_result = str(result)
