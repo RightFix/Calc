@@ -2,9 +2,10 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
-from kivy.uix.button import Button
+# from kivy.uix.button import Button
+from ..ui_custom import CustomBoxLayout, RoundedButton
 import math
-
+Button = RoundedButton
 
 class SciScreen(Screen):
     HEADER_COLOR = (0.3, 0.3, 0.5, 1)
@@ -21,8 +22,8 @@ class SciScreen(Screen):
         self.build_ui()
 
     def build_ui(self):
-        main_layout = BoxLayout(
-            orientation="vertical", spacing=10, padding=[15, 10, 15, 10]
+        main_layout = CustomBoxLayout(
+            orientation="vertical", spacing=10, padding=[15, 10, 15, 10],
         )
 
         app_bar = BoxLayout(size_hint_y=None, height=50, padding=15)
@@ -95,7 +96,7 @@ class SciScreen(Screen):
             size_hint_x=1,
             size_hint_y=0.35,
             text_size=(None, None),
-            color=(1, 1, 1, 1),
+            color=(0.3,.3,.3,1),
             padding=[10, 0],
         )
         self.display_label = Label(
@@ -105,7 +106,7 @@ class SciScreen(Screen):
             size_hint_x=1,
             size_hint_y=0.65,
             text_size=(None, None),
-            color=(1, 1, 1, 1),
+            color=(0.3,0.3,0.3,1),
             padding=[10, 0],
         )
         self.display_label.bind(
@@ -149,7 +150,7 @@ class SciScreen(Screen):
             ("C", "clear", self.NUM_BTN_COLOR, (0.7, 0.3, 0.3, 1)),
             ("(", "(", self.OP_BTN_COLOR, (1, 1, 1, 1)),
             (")", ")", self.OP_BTN_COLOR, (1, 1, 1, 1)),
-            ("⌫", "delete", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("Del", "delete", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
             ("7", "7", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
             ("8", "8", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
             ("9", "9", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
@@ -189,7 +190,18 @@ class SciScreen(Screen):
             self.result_label.text = ""
         elif action == "delete":
             if self.display_label.text and self.display_label.text != "0":
-                self.display_label.text = self.display_label.text[:-1]
+                if self.display_label.text[-5:] == "sqrt(":
+                    self.display_label.text = self.display_label.text[:-5]
+                elif self.display_label.text[-4:] == "tan(":
+                    self.display_label.text = self.display_label.text[:-4]  
+                elif self.display_label.text[-4:] == "sin(":
+                    self.display_label.text = self.display_label.text[:-4]  
+                elif self.display_label.text[-4:] == "cos(":
+                    self.display_label.text = self.display_label.text[:-4]  
+                elif self.display_label.text[-4:] == "log(":
+                    self.display_label.text = self.display_label.text[:-4]  
+                else:    
+                    self.display_label.text = self.display_label.text[:-1]
             if not self.display_label.text:
                 self.display_label.text = "0"
         elif action == "calc":
@@ -207,7 +219,7 @@ class SciScreen(Screen):
                 self.display_label.text += action
 
     def on_func_press(self, action):
-        if action in ("sin", "cos", "tan", "log", "ln", "sqrt"):
+        if action in ("sin", "cos", "tan", "log", "ln"):
             if self.display_label.text == "0":
                 self.display_label.text = f"{action}("
             else:
@@ -217,11 +229,16 @@ class SciScreen(Screen):
                 self.display_label.text = "^"
             else:
                 self.display_label.text += "^"
+        elif action == "sqrt":
+            if self.display_label.text == "0":
+                self.display_label.text = "√"
+            else:
+                self.display_label.text += "√"
         elif action == "pi":
             if self.display_label.text == "0":
-                self.display_label.text = str(math.pi)
+                self.display_label.text = "π"
             else:
-                self.display_label.text += str(math.pi)
+                self.display_label.text += "π"
         elif action == "e":
             if self.display_label.text == "0":
                 self.display_label.text = str(math.e)
@@ -241,6 +258,7 @@ class SciScreen(Screen):
                 self.display_label.text.replace("×", "*")
                 .replace("÷", "/")
                 .replace("^", "**")
+                .replace("π",str(math.pi))
             )
             if self.current_angle_mode == "deg":
                 expr = (
@@ -257,7 +275,7 @@ class SciScreen(Screen):
             expr = (
                 expr.replace("log(", "math.log10(")
                 .replace("ln(", "math.log(")
-                .replace("sqrt(", "math.sqrt(")
+                .replace("√", "math.sqrt(")
             )
             result = eval(expr)
             result = round(result, 10)

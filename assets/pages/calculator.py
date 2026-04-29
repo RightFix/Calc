@@ -2,8 +2,10 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
-from kivy.uix.button import Button
+# from kivy.uix.button import Button
+from ..ui_custom import CustomBoxLayout,RoundedButton
 
+Button = RoundedButton
 
 class CalculatorScreen(Screen):
     last_result = ""
@@ -19,8 +21,8 @@ class CalculatorScreen(Screen):
         self.build_ui()
 
     def build_ui(self):
-        main_layout = BoxLayout(
-            orientation="vertical", spacing=10, padding=[15, 10, 15, 10]
+        main_layout = CustomBoxLayout(
+            orientation="vertical", spacing=10, padding=[15, 10, 15, 10], bg_color=(1,1,1,1)
         )
 
         app_bar = BoxLayout(size_hint_y=None, height=50, padding=15)
@@ -65,9 +67,20 @@ class CalculatorScreen(Screen):
         )
         tvm_btn.bind(on_release=lambda x: self.go_to("tvm_screen"))
 
+        sci_btn = Button(
+            text="Sci",
+            font_size=16,
+            background_color=(0.3, 0.3, 0.5, 1),
+            color=(1, 1, 1, 1),
+            bold=True,
+        )
+        sci_btn.bind(on_release=lambda x: self.go_to("sci_screen"))
+
         top_nav.add_widget(calc_btn)
         top_nav.add_widget(assets_btn)
         top_nav.add_widget(tvm_btn)
+        top_nav.add_widget(sci_btn)
+
 
         main_layout.add_widget(app_bar)
         main_layout.add_widget(top_nav)
@@ -83,7 +96,7 @@ class CalculatorScreen(Screen):
             size_hint_x=1,
             size_hint_y=0.35,
             text_size=(None, None),
-            color=(1, 1, 1, 1),
+            color=(0.3,0.3,0.3,1),
             padding=[10, 0],
         )
         self.display_label = Label(
@@ -93,7 +106,7 @@ class CalculatorScreen(Screen):
             size_hint_x=1,
             size_hint_y=0.65,
             text_size=(None, None),
-            color=(1, 1, 1, 1),
+            color=(0.3,0.3,0.3,1),
             padding=[10, 0],
         )
         self.result_label.bind(
@@ -110,15 +123,6 @@ class CalculatorScreen(Screen):
         side_panel = BoxLayout(
             orientation="vertical", size_hint_x=0.18, spacing=8, padding=[5, 10, 5, 5]
         )
-        sci_btn = Button(
-            text="Sci",
-            font_size=18,
-            background_color=self.NAV_BTN_COLOR,
-            color=(1, 1, 1, 1),
-            bold=True,
-        )
-        sci_btn.bind(on_release=lambda x: self.go_to("sci_screen"))
-        side_panel.add_widget(sci_btn)
 
         buttons_grid = GridLayout(
             cols=4, rows=5, spacing=8, padding=[5, 10, 5, 5], size_hint_x=0.82
@@ -127,7 +131,7 @@ class CalculatorScreen(Screen):
             ("C", "clear", self.NUM_BTN_COLOR, (0.7, 0.3, 0.3, 1)),
             ("÷", "÷", self.OP_BTN_COLOR, (1, 1, 1, 1)),
             ("×", "×", self.OP_BTN_COLOR, (1, 1, 1, 1)),
-            ("⌫", "delete", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
+            ("Del", "delete", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
             ("7", "7", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
             ("8", "8", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
             ("9", "9", self.NUM_BTN_COLOR, (1, 1, 1, 1)),
@@ -157,15 +161,10 @@ class CalculatorScreen(Screen):
             btn.bind(on_release=lambda btn, a=action_capture: self.on_button_press(a))
             buttons_grid.add_widget(btn)
 
-        buttons_container.add_widget(side_panel)
         buttons_container.add_widget(buttons_grid)
         main_layout.add_widget(buttons_container)
 
-        # with main_layout.canvas.before:
-        #     Color(*self.BG_COLOR)
-        #     RoundedRectangle(
-        #         size=main_layout.size, pos=main_layout.pos, radius=[15, 15, 15, 15]
-        #     )
+        
 
         self.add_widget(main_layout)
 
